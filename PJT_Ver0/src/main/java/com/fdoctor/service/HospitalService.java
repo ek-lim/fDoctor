@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.fdoctor.dao.HospitalDao;
 import com.fdoctor.vo.HospitalVO;
 
+
 @Service
 public class HospitalService {
 	
@@ -17,4 +18,11 @@ public class HospitalService {
 		return this.hospitalDao.selectAll();
 	}
 	
+	public HospitalVO selectOne(String name) {
+		return this.hospitalDao.selectOne(name);
+	}
+	
+	public List<HospitalVO> selectList(HospitalVO vo) {
+		return this.hospitalDao.selectList(vo);
+	}
 }

@@ -1,6 +1,6 @@
 
 select * from hospital;
-
+select * from hospital where address like'%송파구%' and department like '%산부인과%';
 drop table hospital;
 
   CREATE TABLE "SCOTT"."HOSPITAL" 

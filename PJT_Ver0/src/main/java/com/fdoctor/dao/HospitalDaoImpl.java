@@ -16,11 +16,15 @@ public class HospitalDaoImpl implements HospitalDao {
 	public List<HospitalVO> selectAll() {
 		return this.sqlSessionTemplate.selectList("selectAll");
 	}
+	
+	@Override
+	public List<HospitalVO> selectList(HospitalVO vo) {
+		return this.sqlSessionTemplate.selectList("selectList");
+	}
 
 	@Override
 	public HospitalVO selectOne(String name) {
-		// TODO Auto-generated method stub
-		return null;
+		return this.sqlSessionTemplate.selectOne("selectHospital");
 	}
 
 	@Override

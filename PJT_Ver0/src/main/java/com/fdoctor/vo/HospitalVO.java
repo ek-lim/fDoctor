@@ -7,7 +7,7 @@ public class HospitalVO {
 	private double gyungdo;
 	private double wido;
 	private int fdoctor;
-	private String foreigner;
+	private int foreigner;
 	private String timewday;
 	private String timewend;
 	private String phone;
@@ -50,10 +50,10 @@ public class HospitalVO {
 	public void setFdoctor(int fdoctor) {
 		this.fdoctor = fdoctor;
 	}
-	public String getForeigner() {
+	public int getForeigner() {
 		return foreigner;
 	}
-	public void setForeigner(String foreigner) {
+	public void setForeigner(int foreigner) {
 		this.foreigner = foreigner;
 	}
 	public String getTimewday() {
