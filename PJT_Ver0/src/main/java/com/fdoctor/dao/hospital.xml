@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.fdoctor.vo.HospitalVO">
+    <!-- table 속성와 bean 속성과의 매핑 -->
+	<resultMap id="HospitalMap" type="com.fdoctor.vo.HospitalVO">
+		<result property="hid" column="hid" />
+		<result property="name" column="name" />
+		<result property="address" column="address" />
+		<result property="gyungdo" column="gyungdo" />
+		<result property="wido" column="wido" />
+		<result property="fdoctor" column="fdoctor" />
+		<result property="foreigner" column="foreigner" />
+		<result property="timewday" column="timewday" />
+		<result property="timewend" column="timewend" />
+		<result property="phone" column="phone" />
+		<result property="department" column="department" />
+		<result property="score" column="score" />
+		<result property="review" column="review" />
+	</resultMap>  
+	
+	<!-- 전체 검색 -->
+    <select id="selectAll" resultMap="HospitalMap">
+		select * from test
+    </select>
+    
+    <!-- 조건 검색 -->
+    <select id="selectTest" resultMap="HospitalMap" parameterType="String">
+    	select * from test where id=#{id}
+    </select>
+    
+    <!-- 추가 -->
+    <insert id = "insertTest" parameterType="Hospital">
+    	insert into test values(#{id}, #{pwd}, #{name})
+    </insert>
+    
+    <!-- 수정 -->
+    <update id="updateTest" parameterType="Hospital">
+    	update test set name=#{name} where id=#{id} and pwd=#{pwd}
+    </update>
+    
+    <!-- 삭제 -->
+    <delete id="deleteTest" parameterType="String">
+    	delete from test where id=#{id}
+    </delete>
+</mapper>

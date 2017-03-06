@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE configuration
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+	<typeAliases>	    
+		<typeAlias alias="hospital" type="com.fdoctor.vo.HospitalVO" />
+	</typeAliases>	
+	<mappers>
+	    <!-- 주의 : 경로 표시 -->
+		<mapper resource="com/fdoctor/dao/hospital.xml" />
+	</mappers>
+</configuration>
