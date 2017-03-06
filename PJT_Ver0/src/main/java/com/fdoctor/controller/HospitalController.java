@@ -21,7 +21,7 @@ public class HospitalController {
 		List<HospitalVO> list = this.hospitalService.selectAll();
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("list", list);
-		mav.setViewName("hospitalList"); // views/memberList로 포워딩
+		mav.setViewName("hospital"); // views/memberList로 포워딩
 		return mav;
 	}
 	
