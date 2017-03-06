@@ -23,7 +23,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 전체 검색 -->
     <select id="selectAll" resultMap="HospitalMap">
-		select * from test
+		select * from hospital
     </select>
     
     <!-- 조건 검색 -->
