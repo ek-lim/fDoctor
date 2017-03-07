@@ -1,31 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
+<%@ page contentType="text/html; charset=UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
 <head>
 <title>병원 찾긔!!</title>
 <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
- 	<link rel="stylesheet" href="../resources/assets/bootstrap/css/bootstrap.css" />
-  <link rel="stylesheet" href="../resources/assets/style.css"/>
+ 	<link rel="stylesheet" href="resources/assets/bootstrap/css/bootstrap.css" />
+  <link rel="stylesheet" href="resources/assets/style.css"/>
   <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-	<script src="../resources/assets/bootstrap/js/bootstrap.js"></script>
-  <script src="../resources/assets/script.js"></script>
+	<script src="resources/assets/bootstrap/js/bootstrap.js"></script>
+  <script src="resources/assets/script.js"></script>
 
 
 
 <!-- Owl stylesheet -->
-<link rel="stylesheet" href="../resources/assets/owl-carousel/owl.carousel.css">
-<link rel="stylesheet" href="../resources/assets/owl-carousel/owl.theme.css">
-<script src="../resources/assets/owl-carousel/owl.carousel.js"></script>
+<link rel="stylesheet" href="resources/assets/owl-carousel/owl.carousel.css">
+<link rel="stylesheet" href="resources/assets/owl-carousel/owl.theme.css">
+<script src="resources/assets/owl-carousel/owl.carousel.js"></script>
 <!-- Owl stylesheet -->
 
 
 <!-- slitslider -->
-    <link rel="stylesheet" type="text/css" href="../resources/assets/slitslider/css/style.css" />
-    <link rel="stylesheet" type="text/css" href="../resources/assets/slitslider/css/custom.css" />
-    <script type="text/javascript" src="../resources/assets/slitslider/js/modernizr.custom.79639.js"></script>
-    <script type="text/javascript" src="../resources/assets/slitslider/js/jquery.ba-cond.min.js"></script>
-    <script type="text/javascript" src="../resources/assets/slitslider/js/jquery.slitslider.js"></script>
+    <link rel="stylesheet" type="text/css" href="resources/assets/slitslider/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="resources/assets/slitslider/css/custom.css" />
+    <script type="text/javascript" src="resources/assets/slitslider/js/modernizr.custom.79639.js"></script>
+    <script type="text/javascript" src="resources/assets/slitslider/js/jquery.ba-cond.min.js"></script>
+    <script type="text/javascript" src="resources/assets/slitslider/js/jquery.slitslider.js"></script>
 <!-- slitslider -->
 
 </head>
@@ -54,7 +55,7 @@
             <!-- Nav Starts -->
             <div class="navbar-collapse  collapse">
               <ul class="nav navbar-nav navbar-right">
-               <li class="active"><a href="index.php">Home</a></li>
+               <li class="active"><a href="index.jsp">Home</a></li>
                 <li><a href="about.php">About</a></li>
                 <li><a href="agents.php">Agents</a></li>         
                 <li><a href="blog.php">Blog</a></li>
@@ -77,7 +78,7 @@
 
 <!-- Header Starts -->
 <div class="header">
-<a href="index.php"><img src="images/logo.png" alt="Realestate"></a>
+<a href="index.jsp"><img src="images/logo.png" alt="Realestate"></a>
 
               <ul class="pull-right">
                 <li><a href="buysalerent.php">Buy</a></li>

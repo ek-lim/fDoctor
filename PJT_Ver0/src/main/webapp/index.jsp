@@ -43,7 +43,36 @@
         <div class="col-lg-4 col-sm-2 ">
           <p>가입하시고 다녀온 병원의 후기를 남겨 보세요.</p>
           <button class="btn btn-info"   data-toggle="modal" data-target="#loginpop">Login</button>        </div>
-      </div>
+					<div class="modal fade" id="loginpop" role="dialog">
+						<div class="modal-dialog">
+
+							<!-- Modal content-->
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal">&times;</button>
+									<h4 class="modal-title">로그인</h4>
+								</div>
+
+								<form name="loginfrm" onsubmit="return dataCheck();" method="post"
+									enctype="multipart/form-data" action="/login.do">
+									<div class="modal-body">
+										<font color=black>아이디</font> <input name="userid"><br/>
+										<font color=black>비밀번호</font> <input type="password" name="password">
+									</div>
+
+									<div class="modal-footer">
+										<!-- data-dismiss="modal" -->
+										<input type="submit" class="btn btn-primary"
+											onclick="return doTip();" value="로그인" />
+									</div>
+								</form>
+
+
+							</div>
+
+						</div>
+					</div>
+				</div>
     </div>
   </div>
 </div>

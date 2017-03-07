@@ -54,7 +54,7 @@
             <!-- Nav Starts -->
             <div class="navbar-collapse  collapse">
               <ul class="nav navbar-nav navbar-right">
-               <li class="active"><a href="index.php">Home</a></li>
+               <li class="active"><a href="index.jsp">Home</a></li>
                 <li><a href="about.php">About</a></li>
                 <li><a href="agents.php">Agents</a></li>         
                 <li><a href="blog.php">Blog</a></li>
@@ -77,7 +77,7 @@
 
 <!-- Header Starts -->
 <div class="header">
-<a href="index.php"><img src="resources/images/logo.png" alt="Realestate"></a>
+<a href="index.jsp"><img src="resources/images/logo.png" alt="Realestate"></a>
 
               <ul class="pull-right">
                 <li><a href="buysalerent.php">Buy</a></li>

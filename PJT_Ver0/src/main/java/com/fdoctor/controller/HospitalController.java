@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -57,7 +58,7 @@ public class HospitalController {
 		}
 	}
 	
-	@RequestMapping("/selectList.do")
+	@RequestMapping(value="/selectList.do", method=RequestMethod.POST)
 	public ModelAndView selectList(@RequestParam String address,
 			@RequestParam String department, 
 			@RequestParam int fdoctor, 
@@ -74,6 +75,5 @@ public class HospitalController {
 		mav.addObject("list", list);
 		mav.setViewName("hospital"); // views/memberList로 포워딩
 		return mav;
-	}
-	
+	}	
 }

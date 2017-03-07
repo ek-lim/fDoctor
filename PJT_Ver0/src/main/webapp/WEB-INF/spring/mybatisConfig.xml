@@ -6,7 +6,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 
 <configuration>
 	<typeAliases>	    
-		<typeAlias alias="hospital" type="com.fdoctor.vo.HospitalVO" />
+		<typeAlias alias="Hospital" type="com.fdoctor.vo.HospitalVO" />
 	</typeAliases>	
 	<mappers>
 	    <!-- 주의 : 경로 표시 -->

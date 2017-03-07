@@ -1,7 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<%@include file="header.jsp" %>
+<%@include file="headeri.jsp" %>
 <!-- banner -->
 <div class="inside-banner">
   <div class="container"> 
@@ -99,7 +99,21 @@
 
 </div>
 <div class="row">
-
+	<c:forEach var="hList" items="${list}">
+      <!-- properties -->
+      <div class="col-lg-4 col-sm-6">
+      <div class="properties">
+        <h4><a href="property-detail.php">${hList.name}</a></h4>
+        <p class="price">${hList.address}</p>
+        <p class="price">${hList.timewday}</p>
+        <p class="price">${hList.department}</p>
+        <p class="price">${hList.phone}</p>
+        <!-- <div class="listing-detail"><span data-toggle="tooltip" data-placement="bottom" data-original-title="Bed Room">5</span> <span data-toggle="tooltip" data-placement="bottom" data-original-title="Living Room">2</span> <span data-toggle="tooltip" data-placement="bottom" data-original-title="Parking">2</span> <span data-toggle="tooltip" data-placement="bottom" data-original-title="Kitchen">1</span> </div> -->
+        <a class="btn btn-primary" href="property-detail.php">자세히 보기</a>
+      </div>
+      </div>
+      <!-- properties -->
+      </c:forEach>    
      <!-- properties -->
       <div class="col-lg-4 col-sm-6">
       <div class="properties">
