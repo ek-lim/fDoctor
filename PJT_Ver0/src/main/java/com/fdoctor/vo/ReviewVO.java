@@ -1,6 +1,6 @@
 package com.fdoctor.vo;
 
-public class DetailVO {
+public class ReviewVO {
 	private String name;
 	private String review;
 	private String reg_date;

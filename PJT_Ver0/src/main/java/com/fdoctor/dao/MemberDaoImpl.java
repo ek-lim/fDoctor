@@ -15,7 +15,7 @@ public class MemberDaoImpl implements MemberDao {
    
    @Override
    public List<MemberVO> selectAll_m() {
-      return this.sqlSessionTemplate.selectList("selectAll");
+      return this.sqlSessionTemplate.selectList("selectMembers");
    }
 
    @Override
@@ -38,7 +38,7 @@ public class MemberDaoImpl implements MemberDao {
 
    @Override
    public MemberVO admin_ok(MemberVO vo) {
-      return this.sqlSessionTemplate.selectOne("selectOne", vo);
+      return this.sqlSessionTemplate.selectOne("adminLogin", vo);
       
    }
 

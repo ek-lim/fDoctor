@@ -29,14 +29,14 @@ public class MemberController {
       
       response.setContentType("text/html;charset=UTF-8");
       PrintWriter out = response.getWriter();
+      
       MemberVO vo = new MemberVO();
       vo.setUser_id(user_id);
       vo.setUser_pwd(user_pwd);
       
       MemberVO re = memberService.admin_ok(vo); 
-      
       if(re != null){
-         List<MemberVO> list = this.memberService.selectAll();
+    	 List<MemberVO> list = this.memberService.selectAll();
          ModelAndView mav = new ModelAndView();
          mav.addObject("list", list);
          mav.setViewName("admin");

@@ -1,7 +1,5 @@
 package com.fdoctor.service;
 
-import java.util.List;
-
 import com.fdoctor.vo.MessageVO;
 
 public interface MessageService {

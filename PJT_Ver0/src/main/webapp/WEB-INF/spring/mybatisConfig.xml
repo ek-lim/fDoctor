@@ -9,13 +9,13 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<typeAlias alias="Hospital" type="com.fdoctor.vo.HospitalVO" />
 		<typeAlias alias="Member" type="com.fdoctor.vo.MemberVO" />
 		<typeAlias alias="Message" type="com.fdoctor.vo.MessageVO" />
-		<typeAlias alias="detail" type="com.fdoctor.vo.DetailVO" />
+		<typeAlias alias="Review" type="com.fdoctor.vo.ReviewVO" />
 	</typeAliases>	
 	<mappers>
 	    <!-- 주의 : 경로 표시 -->
 		<mapper resource="com/fdoctor/dao/hospital.xml" />
 		<mapper resource="com/fdoctor/dao/message.xml" />
 		<mapper resource="com/fdoctor/dao/member.xml" />
-		<mapper resource="com/fdoctor/dao/detail.xml" />
+		<mapper resource="com/fdoctor/dao/review.xml" />
 	</mappers>
 </configuration>

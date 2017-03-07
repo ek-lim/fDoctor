@@ -4,7 +4,7 @@ public class MemberVO {
 	private String user_id;
 	private String user_name;
 	private String user_pwd;
-	private String user_point;
+	private int user_point;
 	
 	public String getUser_id() {
 		return user_id;
@@ -24,10 +24,10 @@ public class MemberVO {
 	public void setUser_pwd(String user_pwd) {
 		this.user_pwd = user_pwd;
 	}
-	public String getUser_point() {
+	public int getUser_point() {
 		return user_point;
 	}
-	public void setUser_point(String user_point) {
+	public void setUser_point(int user_point) {
 		this.user_point = user_point;
 	}
 	

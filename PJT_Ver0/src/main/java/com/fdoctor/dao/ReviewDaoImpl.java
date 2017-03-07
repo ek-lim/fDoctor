@@ -4,23 +4,24 @@ import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
-import com.fdoctor.vo.DetailVO;
-
-public class DetailDaoImpl implements DetailDao {
+import com.fdoctor.vo.ReviewVO;
+@Repository
+public class ReviewDaoImpl implements ReviewDao {
 	@Autowired // sqlSessionTemplate
 	private SqlSessionTemplate sqlSessionTemplate;
 	
 	@Override
-	public List<DetailVO> detailAll() {
+	public List<ReviewVO> reviewAll() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public void insert(DetailVO vo) {
+	public void insert(ReviewVO vo) {
 		// TODO Auto-generated method stub
-		this.sqlSessionTemplate.insert("detailInsert", vo);
+		this.sqlSessionTemplate.insert("reviewInsert", vo);
 		
 	}
 

@@ -13,12 +13,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    </resultMap>  
    
    <!-- 전체 검색 -->
-    <select id="selectAll" resultMap="MemberMap">
-      select * from H_Member
+    <select id="selectMembers" resultMap="MemberMap">
+      select * from H_Member where user_id!='admin'
     </select>
     
     <!-- 어드민 ok -->
-    <select id="selectOne" resultType="Member" parameterType="Member">
+    <select id="adminLogin" resultType="Member" parameterType="Member">
        select * from H_Member where user_id=#{user_id} and user_pwd=#{user_pwd}
     </select>
     

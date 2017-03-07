@@ -6,35 +6,27 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-
-import com.fdoctor.dao.DetailDaoImpl;
-import com.fdoctor.vo.DetailVO;
+import com.fdoctor.service.ReviewService;
+import com.fdoctor.vo.ReviewVO;
 
 @Controller
-public class DetailController {
+public class ReviewController {
 //index에서 넘어옴-> mapping해서 넘겨주자 
 	
 	@Autowired
-	DetailDaoImpl detailDaoImpl;
+	private ReviewService reviewService;
 	
-	
-	
-	@RequestMapping("detail.do")
-	public String selectOne(){
-		return "detail";
-	}
-	
-	@RequestMapping("detail_ok.do")
+	@RequestMapping("review_ok.do")
 	public String detail(@RequestParam("name") String name,
 						@RequestParam("review") String review,
 						@RequestParam("reg_date") String reg_date){
-			DetailVO vo=new DetailVO();
+			ReviewVO vo=new ReviewVO();
 			
 			vo.setName(name);
 			vo.setReview(review);
 			vo.setReg_date(reg_date);
 			
-			this.detailDaoImpl.insert(vo);
+			this.reviewService.insert(vo);
 			return "redirect:detail.jsp";
 	}
 	
