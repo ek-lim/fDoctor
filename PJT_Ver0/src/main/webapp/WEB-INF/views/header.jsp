@@ -59,7 +59,7 @@
                 <li><a href="about.php">About</a></li>
                 <li><a href="agents.php">Agents</a></li>         
                 <li><a href="blog.php">Blog</a></li>
-                <li><a href="contact.php">Contact</a></li>
+                <li><a href="sendmessage.do">제보하기</a></li>
               </ul>
             </div>
             <!-- #Nav Ends -->
@@ -78,7 +78,7 @@
 
 <!-- Header Starts -->
 <div class="header">
-<a href="index.jsp"><img src="images/logo.png" alt="Realestate"></a>
+<a href="index.jsp"><img src="https://www.freelogoservices.com/api/main/ph/zjHl2lgef9cYrQL0JFa7kzbw2vuCqBdGkBvO3zp9OXdE9g5shnN1i...Bv9ettdV9dsBUGw0pY" width=100></a>
 
               <ul class="pull-right">
                 <li><a href="buysalerent.php">Buy</a></li>

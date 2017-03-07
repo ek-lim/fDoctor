@@ -36,11 +36,21 @@ public class HospitalController {
 		return "selectForm";
 	}
 	
-	@RequestMapping("/selectOne_ok.do") // jsp 방식 구현
-	public ModelAndView selectOne_ok(@RequestParam String name, 
+	@RequestMapping("first.do")
+	public ModelAndView first(){
+		List<HospitalVO> list = this.hospitalService.firstList();
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("list", list);
+		mav.setViewName("first"); // views/memberList로 포워딩
+		return mav;
+	}
+	
+	
+	@RequestMapping("detail.do") // jsp 방식 구현
+	public ModelAndView selectOne_ok(@RequestParam int hid,
 			HttpServletResponse response) throws IOException {
 		
-		HospitalVO vo = this.hospitalService.selectOne(name);
+		HospitalVO vo = this.hospitalService.selectOne(hid);
 		
 		// javascript 때문에 한글 처리 한번 더!
 		response.setContentType("text/html;charset=UTF-8");
@@ -49,11 +59,11 @@ public class HospitalController {
 		if (vo != null) {
 			ModelAndView mav = new ModelAndView();
 			mav.addObject("vo", vo);
-			mav.setViewName("selectResult"); // selectResult.jsp
+			mav.setViewName("detail"); 
 			return mav; // view page 포워딩
 		} else {
 			out.println("<script>");
-			out.println("alert('해당하는 병원은 없습니다.')");
+			out.println("alert('병원 소개를 준비중입니다.')");
 			out.println("history.back()");
 			out.println("</script>");
 			return null;
@@ -62,15 +72,28 @@ public class HospitalController {
 	
 	@RequestMapping(value="selectList.do")
 	public ModelAndView selectList(HttpServletRequest request) throws IOException{
-		
+		String name = request.getParameter("name");
 		String address = request.getParameter("address");
 		String department = request.getParameter("department");
-		System.out.println(address);
+		String fdoctor = request.getParameter("fdoctor");
+		String foreigner = request.getParameter("foreigner");
 		HospitalVO vo = new HospitalVO();
-		vo.setAddress(address);
-		vo.setDepartment(department);
-		vo.setFdoctor(1);
-		vo.setForeigner(1);
+		if(name.length()>=1)
+			System.out.println("name은 널이아님");
+			vo.setName(name);
+		if(address.length()>=1)
+			System.out.println("address은 널이아님");
+			vo.setAddress(address);
+		if(department.length()>=1)
+			System.out.println("department은 널이아님");
+			vo.setDepartment(department);
+		if(fdoctor != null){
+			System.out.println("fdoctor는 널이아님");
+			vo.setFdoctor(1);}
+		if(foreigner != null){
+			System.out.println("foreigntr는 널이아님");
+			System.out.println(foreigner);
+			vo.setForeigner(1);}
 		
 		List<HospitalVO> list = this.hospitalService.selectList(vo);
 		ModelAndView mav = new ModelAndView();

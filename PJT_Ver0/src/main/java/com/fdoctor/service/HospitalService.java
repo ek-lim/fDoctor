@@ -18,12 +18,16 @@ public class HospitalService {
 		return this.hospitalDao.selectAll();
 	}
 	
-	public HospitalVO selectOne(String name) {
-		return this.hospitalDao.selectOne(name);
+	public HospitalVO selectOne(int hid) {
+		return this.hospitalDao.selectOne(hid);
 	}
 	
 	public List<HospitalVO> selectList(HospitalVO vo) {
 		System.out.println(vo.getAddress());
 		return this.hospitalDao.selectList(vo);
+	}
+	
+	public List<HospitalVO> firstList() {
+		return this.hospitalDao.firstList();
 	}
 }

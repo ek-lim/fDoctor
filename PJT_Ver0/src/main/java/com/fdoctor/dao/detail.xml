@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.fdoctor.vo.DetailVO">
+    <!-- table 속성와 bean 속성과의 매핑 -->
+	<resultMap id="DetailMap" type="com.fdoctor.vo.DetailVO">
+		<result property="name" column="name" />
+		<result property="review" column="review" />
+		<result property="reg_date" column="reg_date" />
+
+	</resultMap>  
+	
+	<!-- 전체 검색 -->
+    <select id="detailAll" resultMap="DetailMap">
+		select * from detail
+    </select>
+
+    
+    <!-- 추가 -->
+    <insert id = "detailInsert" parameterType="detail">
+    	insert into detail values(#{name}, #{review}, sysdate)
+    </insert>
+
+</mapper>

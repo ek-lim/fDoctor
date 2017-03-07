@@ -5,7 +5,8 @@ import com.fdoctor.vo.HospitalVO;
 
 public interface HospitalDao {
 	List<HospitalVO> selectAll();
-	HospitalVO selectOne(String name);
+	List<HospitalVO> firstList();
+	HospitalVO selectOne(int hid);
 	List<HospitalVO> selectList(HospitalVO vo);
 	void insert(HospitalVO vo);
 	void update(HospitalVO vo);

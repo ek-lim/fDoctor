@@ -1,8 +1,12 @@
 drop table hospital;
 select * from hospital where address like '경기도 용인시 수지구 성복2로 17 ';
+select * from hospital where score=5;
+select * from hospital where name like '%경찰병원%';
+select * from hospital WHERE name like '%경찰병원%' AND foreigner=0
+SELECT TOP 5 FROM hospital where score=5;
+select * from (SELECT * FROM hospital ORDER BY score DESC) WHERE rownum <= 5;
+select * from hospital where 
 
-
-select * from hospital where address like '%용인시%';
 
 --------------------------------------------------------
 --  DDL for Table HOSPITAL

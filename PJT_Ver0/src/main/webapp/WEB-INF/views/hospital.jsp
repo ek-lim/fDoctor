@@ -1,12 +1,15 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<%@include file="headeri.jsp" %>
+<%@include file="header.jsp" %>
+<%
+	
+%>
 <!-- banner -->
 <div class="inside-banner">
   <div class="container"> 
-    <span class="pull-right"><a href="index.php">Home</a> 병원 목록 찾기</span>
-    <h2>병원 목록을 안내드립니다!</h2>
+    <span class="pull-right"><a href="index.php">Home</a>/ 병원 목록 찾기</span>
+    <h2>내가 찾는 병원은 여기에 있었다!</h2>
 </div>
 </div>
 <!-- banner -->
@@ -103,13 +106,13 @@
       <!-- properties -->
       <div class="col-lg-4 col-sm-6">
       <div class="properties">
-        <h4><a href="property-detail.php">${hList.name}</a></h4>
+        <h4><a href="detail.do?hid=${hList.hid }">${hList.name}</a></h4>
         <p class="price">${hList.address}
         <p>${hList.timewday}
         <p>${hList.department}
         <p>${hList.phone}
         <!-- <div class="listing-detail"><span data-toggle="tooltip" data-placement="bottom" data-original-title="Bed Room">5</span> <span data-toggle="tooltip" data-placement="bottom" data-original-title="Living Room">2</span> <span data-toggle="tooltip" data-placement="bottom" data-original-title="Parking">2</span> <span data-toggle="tooltip" data-placement="bottom" data-original-title="Kitchen">1</span> </div> -->
-        <a class="btn btn-primary" href="property-detail.php">자세히 보기</a>
+        <a class="btn btn-primary" href="detail.do?hid=${hList.hid }">자세히 보기</a>
       </div>
       </div>
       <!-- properties -->
@@ -133,39 +136,6 @@
 </div>
 </div>
 </div>
-
-  <div id="tList_wrap">
-    <h2 class="tList_title">병원 목록</h2>
-    <table width="400" id="tList_t">
-      <tr>
-          <th> 병원이름 </th>
-          <th> 주소 </th>
-          <th> 주중 진료시간 </th>
-          <th> 진료과목 </th>
-          <th> 전화번호 </th>
-      </tr>
-      
-      <c:forEach var="hList" items="${list}">
-         <tr>
-            <td align="center"> ${hList.name}</td>
-            <td align="center"> ${hList.address}</td>
-            <td align="center"> ${hList.timewday}</td>
-            <td align="center"> ${hList.department}</td>
-            <td align="center"> ${hList.phone}</td>
-            <td align="center"> 
-              <input type="button" value="수정"
-              onClick="location='update.do?hid=${hList.hid}'" class="btn"/>
-             </td>
-            <td align="center"> 
-             <input type="button" value="삭제"
-                   onclick="if(confirm('정말로 삭제 하시겠습니까?')){
-							location='delete.do?hid=${hList.hid}' 
-							}else{ return; }" class="btn"/>            
-            </td>
-         </tr>      
-      </c:forEach>    
-    </table>  
-  </div>
 
 
 <%@ include file="/resources/include/footer.jsp" %>
