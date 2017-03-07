@@ -10,17 +10,17 @@
 <div class="banner-search">
   <div class="container"> 
     <!-- banner -->
-    <h3>내 맘에 드는 병원 찾기!</h3>
+    <h3>내 맘에 드는 <a href="<%=request.getContextPath()%>/selectList.do">병원</a> 찾기!</h3>
     
     <div class="searchbar">
       <div class="row">
-      <form name="frm" method="post" action="selectList.do">
+      <form name="frm" method="get" action="<%=request.getContextPath()%>/selectList.do">
         <div class="col-lg-8 col-sm-8">
           <!-- <input type="text" class="form-control" placeholder="Search of Properties"> -->
           <div class="row">
             <div class="col-lg-3 col-sm-3 ">
               <select class="form-control" name="address">
-              	<option value="1=1">위치</option>
+              	<option value="*">위치</option>
                 <option value="중구">서울특별시 중구</option>
                 <option value="송파구">서울특별시 송파구</option>
                 <option value="부평구">인천시 부평구</option>
@@ -35,7 +35,7 @@
               <input type="checkbox" name="foreigner" checked="1"> 외국인
             </div>
             <div class="col-lg-3 col-sm-4">
-              <button class="btn btn-success"  onclick="document.getElementById('frm').submit();">찾기!</button>
+              <button class="btn btn-success" onclick="document.getElementById('frm').submit();">찾기!</button>
             </div>
           </div>
         </div>

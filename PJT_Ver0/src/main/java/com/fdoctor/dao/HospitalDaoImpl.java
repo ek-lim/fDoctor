@@ -19,12 +19,13 @@ public class HospitalDaoImpl implements HospitalDao {
 	
 	@Override
 	public List<HospitalVO> selectList(HospitalVO vo) {
-		return this.sqlSessionTemplate.selectList("selectList");
+		System.out.println(vo.getAddress());
+		return this.sqlSessionTemplate.selectList("selectList", vo);
 	}
 
 	@Override
 	public HospitalVO selectOne(String name) {
-		return this.sqlSessionTemplate.selectOne("selectHospital");
+		return this.sqlSessionTemplate.selectOne("selectHospital", name);
 	}
 
 	@Override

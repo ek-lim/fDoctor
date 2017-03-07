@@ -2,8 +2,10 @@ package com.fdoctor.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,17 +60,17 @@ public class HospitalController {
 		}
 	}
 	
-	@RequestMapping(value="/selectList.do", method=RequestMethod.POST)
-	public ModelAndView selectList(@RequestParam String address,
-			@RequestParam String department, 
-			@RequestParam int fdoctor, 
-			@RequestParam int foreigner) throws IOException{
-		HospitalVO vo = new HospitalVO();
+	@RequestMapping(value="selectList.do")
+	public ModelAndView selectList(HttpServletRequest request) throws IOException{
 		
+		String address = request.getParameter("address");
+		String department = request.getParameter("department");
+		System.out.println(address);
+		HospitalVO vo = new HospitalVO();
 		vo.setAddress(address);
 		vo.setDepartment(department);
-		vo.setFdoctor(fdoctor);
-		vo.setForeigner(foreigner);
+		vo.setFdoctor(1);
+		vo.setForeigner(1);
 		
 		List<HospitalVO> list = this.hospitalService.selectList(vo);
 		ModelAndView mav = new ModelAndView();

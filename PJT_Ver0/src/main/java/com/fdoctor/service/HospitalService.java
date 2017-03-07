@@ -23,6 +23,7 @@ public class HospitalService {
 	}
 	
 	public List<HospitalVO> selectList(HospitalVO vo) {
+		System.out.println(vo.getAddress());
 		return this.hospitalDao.selectList(vo);
 	}
 }

@@ -1,4 +1,9 @@
 drop table hospital;
+select * from hospital where address like '경기도 용인시 수지구 성복2로 17 ';
+
+
+select * from hospital where address like '%용인시%';
+
 --------------------------------------------------------
 --  DDL for Table HOSPITAL
 --------------------------------------------------------
@@ -18,7 +23,8 @@ drop table hospital;
 	"SCORE" VARCHAR2(10 BYTE), 
 	"REVIEW" VARCHAR2(500 BYTE)
    ) 
-
+   
+INSERT INTO hospital (HID, NAME, ADDRESS, GYUNGDO, WIDO, FDOCTOR, FOREIGNER, TIMEWDAY, TIMEWEND, PHONE, DEPARTMENT, SCORE, REVIEW) VALUES (10000,'test','test','37.310519','127.081268',1.0,NULL,'09:30~19:00 ','10:00~18:00','031-889-8071','score','review','review');
 INSERT INTO hospital (HID, NAME, ADDRESS, GYUNGDO, WIDO, FDOCTOR, FOREIGNER, TIMEWDAY, TIMEWEND, PHONE, DEPARTMENT, SCORE, REVIEW) VALUES (6,'한지윤피부과의원','경기도 용인시 수지구 성복2로 17 ','37.310519','127.081268',1.0,NULL,'09:30~19:00 ','10:00~18:00','031-889-8071 피부과','','','');
 --행 7
 INSERT INTO hospital (HID, NAME, ADDRESS, GYUNGDO, WIDO, FDOCTOR, FOREIGNER, TIMEWDAY, TIMEWEND, PHONE, DEPARTMENT, SCORE, REVIEW) VALUES (7,'단아한미인의원','경기도 용인시 수지구 성복2로 51 데이파크 ','37.313218','127.078222',1.0,NULL,'10:00~17:00 ','10:00~15:00 ','031-263-2260  피부과','피부과','','');
