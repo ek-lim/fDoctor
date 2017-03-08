@@ -1,6 +1,7 @@
 create table Detail(
 name varchar(20) primary key,
 review varchar(100) not null,
+hid int flroh
 reg_date date
 );
 

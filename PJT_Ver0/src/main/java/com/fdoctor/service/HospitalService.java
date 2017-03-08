@@ -84,49 +84,60 @@ public class HospitalService {
 				nearHid[i] = list.get(i).getHid();
 				minGyungdo[i] = bigyoGyungdo;
 				minWido[i] = bigyoWido;
-				minCha[0]=Math.pow(minGyungdo[0]-gijunGyungdo,2)+Math.pow(minWido[0]-gijunWido, 2);
-			}
-			bigyoCha=Math.pow(bigyoGyungdo-gijunGyungdo,2)+Math.pow(bigyoWido-gijunWido, 2);
-			System.out.println("i=0일때 차이 : "+minCha[0]);
-			if(i<=3){
-				for(int k=0; k<i; k++){
-					if(bigyoCha<minCha[k] && bigyoCha!=0){
-						for(int q=k; q>=0; q--){
-							nearHid[q+1] = nearHid[q];
-							minGyungdo[q+1] = minGyungdo[q];
-							minWido[q+1] = minWido[q];
-						}
-						nearHid[0] = list.get(i).getHid();
-						minGyungdo[0] = bigyoGyungdo;
-						minWido[0] = bigyoWido;
-					}
-				}
-				nearHid[i] = list.get(i).getHid();
-				minGyungdo[i] = bigyoGyungdo;
-				minWido[i] = bigyoWido;
-				minCha[i] = bigyoCha;
+				minCha[i]=Math.pow(minGyungdo[i]-gijunGyungdo,2)+Math.pow(minWido[i]-gijunWido, 2);
 				System.out.println("i="+i+"일때 차이 : "+minCha[i]);
-				
-			}
-			for(int k=0; k<3; k++){
-				if(bigyoCha<minCha[k] && bigyoCha!=0){
-					for(int q=k; q>=0; q--){
-						nearHid[q+1] = nearHid[q];
-						minGyungdo[q+1] = minGyungdo[q];
-						minWido[q+1] = minWido[q];
+			}else{
+				//4번째부터 문제인 거 같다
+				bigyoCha=Math.pow(bigyoGyungdo-gijunGyungdo,2)+Math.pow(bigyoWido-gijunWido, 2);
+				if(i<=3){
+					for(int k=0; k<i; k++){
+						if(bigyoCha<minCha[k] && bigyoCha!=0){
+							for(int q=k; q>=0; q--){
+								nearHid[q+1] = nearHid[q];
+								minGyungdo[q+1] = minGyungdo[q];
+								minWido[q+1] = minWido[q];
+								minCha[q+1] = minCha[q];
+								System.out.println("i="+i+",k="+k+"일때 minCha["+q+"]는"+minCha[q]);
+							}
+							nearHid[0] = list.get(i).getHid();
+							minGyungdo[0] = bigyoGyungdo;
+							minWido[0] = bigyoWido;
+							minCha[0]=bigyoCha;
+						}else{
+							nearHid[i] = list.get(i).getHid();
+							minGyungdo[i] = bigyoGyungdo;
+							minWido[i] = bigyoWido;
+							minCha[i] = bigyoCha;
+							System.out.println("i="+i+",k="+k+"일때 minCha["+i+"]는"+minCha[i]);
+						}
 					}
-					nearHid[0] = list.get(i).getHid();
-					minGyungdo[0] = bigyoGyungdo;
-					minWido[0] = bigyoWido;
+					System.out.println("i="+i+"일때 차이 : "+minCha[i]);
+					
+				}else{
+					for(int k=0; k<3; k++){
+						if(bigyoCha<minCha[k] && bigyoCha!=0){
+							for(int q=k; q>=0; q--){
+								nearHid[q+1] = nearHid[q];
+								minGyungdo[q+1] = minGyungdo[q];
+								minWido[q+1] = minWido[q];
+								minCha[q+1] = minCha[q];
+							}
+							nearHid[0] = list.get(i).getHid();
+							minGyungdo[0] = bigyoGyungdo;
+							minWido[0] = bigyoWido;
+							minCha[0] = bigyoCha;
+						}
+					}
+					if(bigyoCha<minCha[3] && bigyoCha!=0){
+						nearHid[3] = list.get(i).getHid();
+						minGyungdo[3] = bigyoGyungdo;
+						minWido[3] = bigyoWido;
+						minCha[3] = bigyoCha;
+						System.out.println("마지막 자리 탈환 : "+minCha[3]);
+					}	
 				}
 			}
-			if(bigyoCha<minCha[3] && bigyoCha!=0){
-				nearHid[3] = list.get(i).getHid();
-				minGyungdo[3] = bigyoGyungdo;
-				minWido[3] = bigyoWido;
-				minCha[3] = bigyoCha;
-				System.out.println("마지막 자리 탈환 : "+minCha[3]);
-			}		
+			System.out.println(i+"번째 돌 때 "+minCha[0]+" "+minCha[1]+" "+minCha[2]+" "+minCha[3]);
 		}
 		System.out.print("최종 hid : ");
 		for(int i=0; i<4; i++){

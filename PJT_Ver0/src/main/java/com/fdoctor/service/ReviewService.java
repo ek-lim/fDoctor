@@ -15,7 +15,6 @@ public class ReviewService {
 	private ReviewDao reviewDao;
 	
 	public List<ReviewVO> reviewAll() {		
-		System.out.println("서비스에 도달?");
 		return this.reviewDao.reviewAll();
 	}
 	
