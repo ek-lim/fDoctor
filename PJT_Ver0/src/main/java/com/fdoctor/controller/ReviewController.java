@@ -16,18 +16,17 @@ public class ReviewController {
 	@Autowired
 	private ReviewService reviewService;
 	
-	@RequestMapping("review_ok.do")
+	@RequestMapping("review.do")
 	public String detail(@RequestParam("name") String name,
 						@RequestParam("review") String review,
-						@RequestParam("reg_date") String reg_date){
-			ReviewVO vo=new ReviewVO();
-			
-			vo.setName(name);
-			vo.setReview(review);
-			vo.setReg_date(reg_date);
-			
-			this.reviewService.insert(vo);
-			return "redirect:detail.jsp";
+						@RequestParam("hid") int hid){
+		ReviewVO vo=new ReviewVO();
+		
+		vo.setName(name);
+		vo.setReview(review);
+		String result="redirect:detail.do?hid="+hid;
+		this.reviewService.insert(vo);
+		return result;
 	}
 	
 	

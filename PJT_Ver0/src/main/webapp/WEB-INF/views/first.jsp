@@ -11,7 +11,7 @@
 <div class="banner-search">
   <div class="container"> 
     <!-- banner -->
-    <h3>내 맘에 드는 병원 찾기!</h3>
+    <h3>내 맘에 드는 <a href="distanceList.do">병원</a> <a href="selectOne.do">찾기!</a></h3>
     
     <div class="searchbar">
     

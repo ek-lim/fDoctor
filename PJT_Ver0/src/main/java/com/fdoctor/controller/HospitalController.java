@@ -14,13 +14,18 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.fdoctor.service.HospitalService;
+import com.fdoctor.service.ReviewService;
 import com.fdoctor.vo.HospitalVO;
+import com.fdoctor.vo.ReviewVO;
 
 @Controller
 public class HospitalController {
 	
 	@Autowired
 	private HospitalService hospitalService;
+	@Autowired
+	private ReviewService reviewService;
+	
 	@RequestMapping("selectAll.do")
 	public ModelAndView select(){
 		List<HospitalVO> list = this.hospitalService.selectAll();
@@ -49,7 +54,8 @@ public class HospitalController {
 			HttpServletResponse response) throws IOException {
 		
 		HospitalVO vo = this.hospitalService.selectOne(hid);
-		
+		List<ReviewVO> reviewList = this.reviewService.reviewAll();
+		System.out.println(reviewList.get(0).getName());
 		// javascript 때문에 한글 처리 한번 더!
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = response.getWriter();
@@ -57,6 +63,9 @@ public class HospitalController {
 		if (vo != null) {
 			ModelAndView mav = new ModelAndView();
 			mav.addObject("vo", vo);
+			List<HospitalVO> target = this.hospitalService.nearList(hid);
+			mav.addObject("distlist", target);
+			mav.addObject("reviewlist", reviewList);
 			mav.setViewName("detail"); 
 			return mav; // view page 포워딩
 		} else {
@@ -99,4 +108,27 @@ public class HospitalController {
 		mav.setViewName("hospital"); // views/memberList로 포워딩
 		return mav;
 	}	
+	
+	// 가장 가까운 병원 찾기 (나중에 서비스로 옮길 것)
+	@RequestMapping("distance.do")
+	public ModelAndView distance(){
+		int hid=1001;
+		HospitalVO target = this.hospitalService.nearOne(hid);
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("vo", target);
+		mav.setViewName("detail"); 
+		return mav;
+	}
+	
+	// 가장 가까운 병원 목록 찾기(병원 기준-수정중)
+	@RequestMapping("distanceList.do")
+	public ModelAndView distanceList(){
+		int hid=1001;
+		
+		List<HospitalVO> target = this.hospitalService.nearList(hid);
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("distlist", target);
+		mav.setViewName("hospital"); 
+		return mav;
+	}
 }

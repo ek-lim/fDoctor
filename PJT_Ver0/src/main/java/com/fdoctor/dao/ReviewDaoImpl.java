@@ -8,14 +8,15 @@ import org.springframework.stereotype.Repository;
 
 import com.fdoctor.vo.ReviewVO;
 @Repository
-public class ReviewDaoImpl implements ReviewDao {
+public class ReviewDaoImpl implements ReviewDao{
 	@Autowired // sqlSessionTemplate
 	private SqlSessionTemplate sqlSessionTemplate;
 	
 	@Override
 	public List<ReviewVO> reviewAll() {
 		// TODO Auto-generated method stub
-		return null;
+		System.out.println("DAO에 도달?");
+		return this.sqlSessionTemplate.selectList("reviewAll");
 	}
 
 	@Override

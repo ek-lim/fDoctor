@@ -5,7 +5,7 @@ select * from hospital where name like '%경찰병원%';
 select * from hospital WHERE name like '%경찰병원%' AND foreigner=0
 SELECT TOP 5 FROM hospital where score=5;
 select * from (SELECT * FROM hospital ORDER BY score DESC) WHERE rownum <= 5;
-select * from hospital where 
+SELECT * FROM (SELECT * FROM hospital ORDER BY score DESC) WHERE rownum <= 4 ; -- 조건에 맞는 몇 개 보여주기
 
 
 --------------------------------------------------------

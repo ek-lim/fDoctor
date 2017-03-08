@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@include file="header.jsp" %>
 <%@page import="com.fdoctor.vo.HospitalVO" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%
 	HospitalVO vo = (HospitalVO)request.getAttribute("vo");
 	String fItda = "없음"; String wItda = "없음";
@@ -56,36 +57,16 @@ type="text/javascript"></script>
 <div class="col-lg-3 col-sm-4 hidden-xs">
 
 <div class="hot-properties hidden-xs">
-<h4>Hot Properties</h4>
+<h4>이 병원 근처에는..</h4>
+<c:forEach var="dList" items="${distlist }">
 <div class="row">
-                <div class="col-lg-4 col-sm-5"><img src="images/properties/4.jpg" class="img-responsive img-circle" alt="properties"/></div>
-                <div class="col-lg-8 col-sm-7">
-                  <h5><a href="property-detail.php">Integer sed porta quam</a></h5>
-                  <p class="price">$300,000</p> </div>
+                <div class="col-lg-11 col-sm-8">
+                  <h5><a href="detail.do?hid=${dList.hid }">${dList.name }</a></h5>
+                  <p class="price">${dList.address }</p> </div>
               </div>
-<div class="row">
-                <div class="col-lg-4 col-sm-5"><img src="images/properties/1.jpg" class="img-responsive img-circle" alt="properties"/></div>
-                <div class="col-lg-8 col-sm-7">
-                  <h5><a href="property-detail.php">Integer sed porta quam</a></h5>
-                  <p class="price">$300,000</p> </div>
-              </div>
-
-<div class="row">
-                <div class="col-lg-4 col-sm-5"><img src="images/properties/3.jpg" class="img-responsive img-circle" alt="properties"/></div>
-                <div class="col-lg-8 col-sm-7">
-                  <h5><a href="property-detail.php">Integer sed porta quam</a></h5>
-                  <p class="price">$300,000</p> </div>
-              </div>
-
-<div class="row">
-                <div class="col-lg-4 col-sm-5"><img src="images/properties/2.jpg" class="img-responsive img-circle" alt="properties"/></div>
-                <div class="col-lg-8 col-sm-7">
-                  <h5><a href="property-detail.php">Integer sed porta quam</a></h5>
-                  <p class="price">$300,000</p> </div>
-              </div>
+</c:forEach>
 
 </div>
-
 
 
 <div class="advertisement">
@@ -124,7 +105,64 @@ type="text/javascript"></script>
 		<h4>
 			<span class="glyphicon glyphicon-th-list"></span> 후기
 		</h4>
+		<!-- 다영씨 part start -->
+		<c:forEach var="uList" items="${reviewlist}">
+									<tr>
+										<td align="center">${uList.name}</td>
+										<td align="center">${uList.review}</td>
+										<td align="center">${uList.reg_date}</td> 
+									</tr>
+								</c:forEach>
+		<div id="uList_menu">
+		<form action="review.do" method="get">
+			<table border="1">	
+				<tr>
+					<td>작성자:<input name="name"/></td>			
+					<td>후기: <input name="review"/>
+					<input type="hidden" name="hid" value="${vo.hid }"/></td>
+					
+					<td align="center"><input type="submit" value="작성"/>
+					<input type="reset" value="취소"/></td>
+				</tr>
+			
+			</table>
+		
+		</form>
+		<%-- <div id="uList_wrap">
+							<h2 class="uList_title">후기목록</h2>
+							<table id="uList_t">
+								<tr>
+									<th class="name">작성자</th>
+									<th class="review">후기</th>
+									<th class="reg_date">날짜</th>
+								</tr>
+								<c:forEach var="uList" items="${reviewlist}">
+									<tr>
+										<td align="center">${uList.name}</td>
+										<td align="center">${uList.review}</td>
+										<td align="center">${uList.reg_date}</td> 
+									</tr>
+								</c:forEach>
+							</table>
+<!-- 							<div id="uList_menu">
+								<input type="button" value="후기남기기" class="input_b"
+									onclick="location='review.do'" />-->
 	</div>
+	<div id="uList_wrap" align="center">
+		<form action="review.do" method="get">
+			<table border="1">	
+				<tr>
+					<td>작성자:<input name="name"/></td>			
+					<td>후기: <input name="review"/></td>
+					<td align="center"><input type="submit" value="작성"/>
+					<input type="reset" value="취소"/></td>
+				</tr>
+			
+			</table>
+		
+		</form>
+	--%><!-- 다영씨 part end -->
+	</div>  
   <div class="col-lg-4">
   <div class="col-lg-12  col-sm-6">
 <div class="property-info">
