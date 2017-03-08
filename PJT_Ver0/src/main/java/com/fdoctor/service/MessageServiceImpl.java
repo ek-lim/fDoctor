@@ -13,9 +13,8 @@ public class MessageServiceImpl implements MessageService {
 	@Autowired
 	private MessageDao messageDao;
 
-	public void sendmessage(MessageVO vo) {
-		// TODO Auto-generated method stub
-		this.messageDao.sendmessage(vo);
+	public int sendmessage(MessageVO vo) {
+		return this.messageDao.sendmessage(vo);
 
 	}
 	

@@ -17,6 +17,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
     <!-- 추가 -->
     <insert id = "sendmessage" parameterType="Message">
-    	insert into message values(#{sender}, #{message_title}, #{message_cont})
+    	insert into message values(message_seq.nextval, #{sender}, #{recipient}, #{message_title}, #{message_cont}, sysdate)
     </insert>
 </mapper>

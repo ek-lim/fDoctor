@@ -6,7 +6,7 @@ public interface MessageService {
 	
 
 	// 메시지 전송 
-	void sendmessage(MessageVO vo);
+	int sendmessage(MessageVO vo);
 	
 
 }
