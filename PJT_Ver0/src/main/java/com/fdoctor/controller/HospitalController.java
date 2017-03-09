@@ -43,6 +43,15 @@ public class HospitalController {
 		return mav;
 	}
 	
+	@RequestMapping("distance.do")
+	public String nearOne(@RequestParam double gdo,
+			@RequestParam double wdo,
+			HttpServletRequest request) throws IOException{
+		int hid = this.hospitalService.nearOne(gdo, wdo);
+		
+		return "redirect:detail.do?hid="+hid;
+	}
+	
 	
 	@RequestMapping("detail.do") // jsp 방식 구현
 	public ModelAndView selectOne_ok(@RequestParam int hid,

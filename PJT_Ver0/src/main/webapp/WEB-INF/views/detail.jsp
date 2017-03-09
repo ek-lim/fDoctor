@@ -14,6 +14,30 @@
 <script src="resource/js/map.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAePEIkk69EZn_HisDjO2iuDzYXWBVLkAg "
 type="text/javascript"></script>
+<script src="http://code.jquery.com/jquery-1.12.1.js"></script> 
+<script src="resource/js/ajax.js"></script>
+<script>
+  function data_check(){
+	  var sender = document.frm.sender.value;
+	  var message_title = document.frm.message_title.value;
+	  var message_cont = document.frm.message_cont.value;
+	  if(sender == ""){
+		  alert('작성자를 입력하세요~!');
+		  frm.sender.focus();
+		  return false;
+	  }
+	  if(message_title == ""){
+		  alert('제목을 입력하세요~!');
+		  frm.message_title.focus();
+		  return false;
+	  }
+	  if(message_cont == ""){
+		  alert('내용을 입력하세요~!');
+		  frm.message_cont.focus();
+		  return false;
+	  }
+  }
+</script>
 <script> 
   window.onload=function initialize(){ 
   var myLatlng = new google.maps.LatLng(${vo.gyungdo}, ${vo.wido});
@@ -43,8 +67,8 @@ type="text/javascript"></script>
 <!-- banner -->
 <div class="inside-banner">
   <div class="container"> 
-    <span class="pull-right"><a href="#">Home</a> / Buy</span>
-    <h2>Buy</h2>
+    <span class="pull-right"><a href="#">Home</a> / 병원 정보 보기</span>
+    <h2>자세한 병원 정보를 확인하세요!</h2>
 </div>
 </div>
 <!-- banner -->
@@ -105,8 +129,9 @@ type="text/javascript"></script>
 		<h4>
 			<span class="glyphicon glyphicon-th-list"></span> 후기
 		</h4>
+		<p>${vo.review }</p>
 		<!-- 다영씨 part start -->
-		<c:forEach var="uList" items="${reviewlist}">
+		<%-- <c:forEach var="uList" items="${reviewlist}">
 									<tr>
 										<td align="center">${uList.name}</td>
 										<td align="center">${uList.review}</td>
@@ -127,7 +152,7 @@ type="text/javascript"></script>
 			
 			</table>
 		
-		</form>
+		</form> --%>
 		<%-- <div id="uList_wrap">
 							<h2 class="uList_title">후기목록</h2>
 							<table id="uList_t">
@@ -177,10 +202,10 @@ type="text/javascript"></script>
 <div class="col-lg-12 col-sm-6 ">
 <div class="enquiry">
   <h6><span class="glyphicon glyphicon-envelope"></span>잘못된 정보 제보하기</h6>
-  <form role="form">
-                <input type="text" class="form-control" placeholder="이름"/>
-                <input type="text" class="form-control" placeholder="you@yourdomain.com"/>
-                <textarea rows="6" class="form-control" placeholder="수정할 정보가 있으신가요?"></textarea>
+  <form name="frm" method="post" action="sendmessage_ok.do" onsubmit="return data_check()">
+                <input type="text" class="form-control"  placeholder="작성자" name="sender" id="sender">
+                <input type="text" class="form-control"  placeholder="제목" name="message_title" id="message_title">
+                <textarea rows="6" class="form-control" placeholder="수정할 정보가 있으신가요?" name="message_cont" id="message_cont"></textarea>
       <button type="submit" class="btn btn-primary" name="Submit">보내기</button>
       </form>
  </div>
@@ -195,5 +220,5 @@ type="text/javascript"></script>
 
 </div>
 </body>
-</html> 
-<%@include file="footer.jsp" %>
+</html> <%-- 
+<%@include file="footer.jsp" %> --%>

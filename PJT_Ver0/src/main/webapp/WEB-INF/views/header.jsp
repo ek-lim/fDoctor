@@ -56,10 +56,7 @@
             <div class="navbar-collapse  collapse">
               <ul class="nav navbar-nav navbar-right">
                <li class="active"><a href="index.jsp">Home</a></li>
-                <li><a href="about.php">About</a></li>
-                <li><a href="agents.php">Agents</a></li>         
-                <li><a href="blog.php">Blog</a></li>
-                <li><a href="sendmessage.do">제보하기</a></li>
+               <li><a href="sendmessage.do">제보하기</a></li>
               </ul>
             </div>
             <!-- #Nav Ends -->
@@ -80,11 +77,11 @@
 <div class="header">
 <a href="index.jsp"><img src="https://www.freelogoservices.com/api/main/ph/zjHl2lgef9cYrQL0JFa7kzbw2vuCqBdGkBvO3zp9OXdE9g5shnN1i...Bv9ettdV9dsBUGw0pY" width=100></a>
 
-              <ul class="pull-right">
+              <!-- <ul class="pull-right">
                 <li><a href="buysalerent.php">Buy</a></li>
                 <li><a href="buysalerent.php">Sale</a></li>         
                 <li><a href="buysalerent.php">Rent</a></li>
-              </ul>
+              </ul> -->
 </div>
 <!-- #Header Starts -->
 </div>

@@ -24,7 +24,6 @@ public class HospitalService {
 	}
 	
 	public List<HospitalVO> selectList(HospitalVO vo) {
-		System.out.println(vo.getAddress());
 		return this.hospitalDao.selectList(vo);
 	}
 	
@@ -32,7 +31,7 @@ public class HospitalService {
 		return this.hospitalDao.firstList();
 	}
 	
-	public HospitalVO nearOne(double gijunGyungdo, double gijunWido){
+	public int nearOne(double gijunGyungdo, double gijunWido){
 		double bigyoGyungdo; double bigyoWido;
 		double minGyungdo=0; double minWido=0;
 		double bigyoCha; double minCha;
@@ -55,7 +54,8 @@ public class HospitalService {
 				minWido = bigyoWido;
 			}
 		}
-		return this.hospitalDao.selectOne(gijunHid);
+		HospitalVO vo = this.hospitalDao.selectOne(gijunHid);
+		return vo.getHid();
 	}
 	
 	public List<HospitalVO> nearList(int hid){

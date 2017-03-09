@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.fdoctor.service.ReviewService;
@@ -16,7 +17,20 @@ public class ReviewController {
 	@Autowired
 	private ReviewService reviewService;
 	
-	@RequestMapping("review.do")
+	@RequestMapping(value="review.do", method=RequestMethod.POST)
+	/*public String checkId(@RequestParam HashMap<String, Object> param) {
+	     
+	    System.out.println(param);
+	    System.out.println("id is "+param.get("id"));
+	 
+	    //your logic
+	 
+	    HashMap<String, Object> hashmap = new HashMap<String, Object>();
+	    hashmap.put("KEY", "YES");
+	     
+	    return null;
+	}
+	@RequestMapping(value = "/user/signUp/checkId", method = RequestMethod.POST)*/
 	public String detail(@RequestParam("name") String name,
 						@RequestParam("review") String review,
 						@RequestParam("hid") int hid){
@@ -28,6 +42,4 @@ public class ReviewController {
 		this.reviewService.insert(vo);
 		return result;
 	}
-	
-	
 }
