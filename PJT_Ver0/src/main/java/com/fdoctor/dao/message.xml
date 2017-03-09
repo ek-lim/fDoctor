@@ -5,18 +5,36 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="com.fdoctor.vo.MessageVO">
 
-	<resultMap id="MessageMap" type="com.fdoctor.vo.MessageVO">
-		<result property="message_no" column="message_no" />
-		<result property="sender" column="sender" />
-		<result property="recipient" column="recipient" />
-		<result property="message_title" column="message_title" />
-		<result property="message_cont" column="message_cont" />
-		<result property="message_date" column="message_date" />
-	</resultMap>  
+   <resultMap id="MessageMap" type="com.fdoctor.vo.MessageVO">
+      <result property="message_no" column="message_no" />
+      <result property="sender" column="sender" />
+      <result property="recipient" column="recipient" />
+      <result property="message_title" column="message_title" />
+      <result property="message_cont" column="message_cont" />
+      <result property="message_date" column="message_date" />
+   </resultMap>  
 
 
     <!-- 추가 -->
     <insert id = "sendmessage" parameterType="Message">
-    	insert into message values(message_seq.nextval, #{sender}, #{recipient}, #{message_title}, #{message_cont}, sysdate)
+       insert into message values(message_seq.nextval, #{sender}, 'admin', #{message_title}, #{message_cont}, sysdate, default)
     </insert>
+    
+    <!-- 전체 보기 -->
+    <select id="selectmessage" resultMap="MessageMap">
+       select * from message order by message_date
+    </select>
+    
+    <!-- 선택 보기 -->
+    <select id="selectOnemessage" resultMap="MessageMap" parameterType="int">
+       select * from message where message_no=#{message_no}
+    </select>
+    
+    <!-- 수정 -->
+
+   <update id="updatemessage" parameterType="int">
+      update message set message_ck='읽음' where message_no=#{message_no}
+   </update>
+
+
 </mapper>

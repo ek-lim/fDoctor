@@ -1,10 +1,15 @@
+drop table detail purge;
+
 create table Detail(
-name varchar(20) primary key,
+hid int,
+name varchar(20),
 review varchar(100) not null,
-hid int flroh
-reg_date date
+reg_date date,
+foreign key(hid) references hospital(hid)
 );
 
-insert into DETAIL values('hong', 'ㅇㅇㅇ', sysdate)
+
+
+insert into DETAIL values(24,'hong', 'ㅇㅇㅇ', sysdate);
 
 select*from detail;

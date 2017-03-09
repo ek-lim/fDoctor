@@ -1,4 +1,4 @@
-drop table hospital;
+drop table hospital purge;
 select * from hospital where address like '경기도 용인시 수지구 성복2로 17 ';
 select * from hospital where score=5;
 select * from hospital where name like '%경찰병원%';
@@ -13,7 +13,7 @@ SELECT * FROM (SELECT * FROM hospital ORDER BY score DESC) WHERE rownum <= 4 ; -
 --------------------------------------------------------
 
   CREATE TABLE "SCOTT"."HOSPITAL" 
-   (	"HID" NUMBER(*,0), 
+   (	"HID" NUMBER(*,0) primary key, 
 	"NAME" VARCHAR2(50 BYTE), 
 	"ADDRESS" VARCHAR2(200 BYTE), 
 	"GYUNGDO" NUMBER, 
@@ -24,7 +24,7 @@ SELECT * FROM (SELECT * FROM hospital ORDER BY score DESC) WHERE rownum <= 4 ; -
 	"TIMEWEND" VARCHAR2(30 BYTE), 
 	"PHONE" VARCHAR2(30 BYTE), 
 	"DEPARTMENT" VARCHAR2(50 BYTE), 
-	"SCORE" VARCHAR2(10 BYTE), 
+	"SCORE" NUMBER, 
 	"REVIEW" VARCHAR2(500 BYTE)
    ) 
    

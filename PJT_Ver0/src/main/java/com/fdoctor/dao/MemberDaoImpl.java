@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.fdoctor.vo.MemberVO;
+import com.fdoctor.vo.MessageVO;
 @Repository
 public class MemberDaoImpl implements MemberDao {
    
@@ -41,5 +42,23 @@ public class MemberDaoImpl implements MemberDao {
       return this.sqlSessionTemplate.selectOne("adminLogin", vo);
       
    }
+
+@Override
+public List<MessageVO> selectAll_msg() {
+	return this.sqlSessionTemplate.selectList("selectmessage");
+}
+
+@Override
+public MessageVO selectOne_msg(int message_no) {
+	// TODO Auto-generated method stub
+	return this.sqlSessionTemplate.selectOne("selectOnemessage", message_no);
+}
+
+@Override
+public void update_msg(int message_no) {
+	
+	this.sqlSessionTemplate.update("updatemessage", message_no);
+}
+
 
 }

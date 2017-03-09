@@ -6,13 +6,71 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>희희</title>
+<script type="text/javascript">
+  window.onload=function(){
+    //위치정보를 확인할 수 있는 브라우저인지 확인
+    if(navigator.geolocation == undefined){
+        alert("위치 정보 기능을 지원하지 않습니다!")
+        return;
+    }
+ }
+</script>
 </head>
 <body>
 <div class="banner-search">
   <div class="container"> 
     <!-- banner -->
-    <h3>내 맘에 드는 <a href="distanceList.do">병원</a> <a href="selectOne.do">찾기!</a></h3>
-    
+    <h3>내 맘에 드는 병원 찾기!</h3>
+    <form name="near" action="distance.do">
+    	
+ <script>
+ //현재 위치 정보 알아보는 메소드
+ function showData(){
+    navigator.geolocation.getCurrentPosition(success, fail); //현재 위치 정보를 조사하고 성공 실패 했을시 호출되는 함수 설정
+ }
+ 
+ function success(position) { //성공시
+    log("위치정보 확인 성공!");
+    for(var property in position.coords) { //반복문 돌면서 출력
+        log("Key 값:"+property+" 정보:"+position.coords[property]);
+    }
+    var lat=position.coords["latitude"];
+    var lon=position.coords["longitude"];
+    var url="http://maps.googleapis.com/maps/api/geocode/json?latlng="+lat+","+lon+"&sensor=false";
+     //location.href = url;//페이지 이동하기
+ }
+ 
+ //실패시
+ function fail(err){
+    switch (err.code){
+        case err.PERMISSION_DENIED:
+            msg = "사용자 거부";
+        break;
+ 
+        case err.PERMISSION_UNAVAILABLE:
+            msg = "지리정보를 얻을 수 없음";
+        break;
+ 
+        case err.TIMEOUT:
+            msg = "시간초과";
+        break;
+ 
+        case err.UNKNOWN_ERROR:
+            msg = "알 수 없는 오류 발생";
+        break;
+    }
+        log(msg);
+ }
+  
+ function log(msg){
+    var console = document.getElementById("console");
+    console.innerHTML += msg+"<br/>";
+ }
+</script>
+ 
+ <button onclick="showData()">현재 위치 확인</button>
+    <font color=red>※ </font> 무조건 가까운 병원 찾을 때는 <a onclick="document.getElementById('near').submit();">여기</a>를 클릭!
+    </form><br/>
     <div class="searchbar">
     
       <div class="row">

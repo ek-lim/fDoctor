@@ -8,6 +8,7 @@ public class MessageVO {
 	private String message_title; // 제목
 	private String message_cont; // 내용
 	private String message_date; // 작성시간
+	private String message_ck;
 	
 	public int getMessage_no() {
 		return message_no;
@@ -44,6 +45,12 @@ public class MessageVO {
 	}
 	public void setMessage_date(String message_date) {
 		this.message_date = message_date;
+	}
+	public String getMessage_ck() {
+		return message_ck;
+	}
+	public void setMessage_ck(String message_ck) {
+		this.message_ck = message_ck;
 	}
 	
 

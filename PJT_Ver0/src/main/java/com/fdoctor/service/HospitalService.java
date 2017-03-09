@@ -32,16 +32,11 @@ public class HospitalService {
 		return this.hospitalDao.firstList();
 	}
 	
-	public HospitalVO nearOne(int hid){
+	public HospitalVO nearOne(double gijunGyungdo, double gijunWido){
 		double bigyoGyungdo; double bigyoWido;
 		double minGyungdo=0; double minWido=0;
 		double bigyoCha; double minCha;
 		int gijunHid=1039;
-		// 기준 경도/위도 불러오기
-		HospitalVO vo = this.hospitalDao.selectOne(hid);
-		double gijunGyungdo = vo.getGyungdo();
-		double gijunWido = vo.getWido();
-		
 		// list 불러오기
 		List<HospitalVO> list = this.hospitalDao.selectAll();
 		for(int i=0; i<list.size(); i++){
@@ -80,6 +75,170 @@ public class HospitalService {
 		for(int i=0; i<list.size(); i++){
 			bigyoGyungdo = list.get(i).getGyungdo();
 			bigyoWido = list.get(i).getWido();
+			bigyoCha=Math.pow(bigyoGyungdo-gijunGyungdo,2)+Math.pow(bigyoWido-gijunWido, 2);
+			if(bigyoCha!=0){
+				if(i<=3){
+					if(i==0){
+						nearHid[i] = list.get(i).getHid();
+						minGyungdo[i] = bigyoGyungdo;
+						minWido[i] = bigyoWido;
+						minCha[i]=bigyoCha;
+					}else if(i==1){
+						if(bigyoCha<minCha[0]){
+							int q=0;
+							nearHid[q+1] = nearHid[q];
+							minGyungdo[q+1] = minGyungdo[q];
+							minWido[q+1] = minWido[q];
+							minCha[q+1] = minCha[q];
+							nearHid[q] = list.get(i).getHid();
+							minGyungdo[q] = bigyoGyungdo;
+							minWido[q] = bigyoWido;
+							minCha[q]=bigyoCha;
+						}else{
+							nearHid[i] = list.get(i).getHid();
+							minGyungdo[i] = bigyoGyungdo;
+							minWido[i] = bigyoWido;
+							minCha[i]=bigyoCha;
+						}
+					}else if(i==2){
+						if(bigyoCha<minCha[0]){
+							int q=0;
+							nearHid[q+2] = nearHid[q+1];
+							minGyungdo[q+2] = minGyungdo[q+1];
+							minWido[q+2] = minWido[q+1];
+							minCha[q+2] = minCha[q+1];
+							nearHid[q+1] = nearHid[q];
+							minGyungdo[q+1] = minGyungdo[q];
+							minWido[q+1] = minWido[q];
+							minCha[q+1] = minCha[q];
+							nearHid[q] = list.get(i).getHid();
+							minGyungdo[q] = bigyoGyungdo;
+							minWido[q] = bigyoWido;
+							minCha[q]=bigyoCha;
+						}else if(bigyoCha<minCha[1]){
+							int q=1;
+							nearHid[q+1] = nearHid[q];
+							minGyungdo[q+1] = minGyungdo[q];
+							minWido[q+1] = minWido[q];
+							minCha[q+1] = minCha[q];
+							nearHid[q] = list.get(i).getHid();
+							minGyungdo[q] = bigyoGyungdo;
+							minWido[q] = bigyoWido;
+							minCha[q]=bigyoCha;
+						}else{
+							nearHid[i] = list.get(i).getHid();
+							minGyungdo[i] = bigyoGyungdo;
+							minWido[i] = bigyoWido;
+							minCha[i]=bigyoCha;
+						}
+					}else if(i==3){
+						if(bigyoCha<minCha[0]){
+							int q=0;
+							nearHid[q+3] = nearHid[q+2];
+							minGyungdo[q+3] = minGyungdo[q+2];
+							minWido[q+3] = minWido[q+2];
+							minCha[q+3] = minCha[q+2];
+							nearHid[q+2] = nearHid[q+1];
+							minGyungdo[q+2] = minGyungdo[q+1];
+							minWido[q+2] = minWido[q+1];
+							minCha[q+2] = minCha[q+1];
+							nearHid[q+1] = nearHid[q];
+							minGyungdo[q+1] = minGyungdo[q];
+							minWido[q+1] = minWido[q];
+							minCha[q+1] = minCha[q];
+							nearHid[q] = list.get(i).getHid();
+							minGyungdo[q] = bigyoGyungdo;
+							minWido[q] = bigyoWido;
+							minCha[q]=bigyoCha;
+						}else if(bigyoCha<minCha[1]){
+							int q=1;
+							nearHid[q+2] = nearHid[q+1];
+							minGyungdo[q+2] = minGyungdo[q+1];
+							minWido[q+2] = minWido[q+1];
+							minCha[q+2] = minCha[q+1];
+							nearHid[q+1] = nearHid[q];
+							minGyungdo[q+1] = minGyungdo[q];
+							minWido[q+1] = minWido[q];
+							minCha[q+1] = minCha[q];
+							nearHid[q] = list.get(i).getHid();
+							minGyungdo[q] = bigyoGyungdo;
+							minWido[q] = bigyoWido;
+							minCha[q]=bigyoCha;
+						}else if(bigyoCha<minCha[2]){
+							int q=2;
+							nearHid[q+1] = nearHid[q];
+							minGyungdo[q+1] = minGyungdo[q];
+							minWido[q+1] = minWido[q];
+							minCha[q+1] = minCha[q];
+							nearHid[q] = list.get(i).getHid();
+							minGyungdo[q] = bigyoGyungdo;
+							minWido[q] = bigyoWido;
+							minCha[q]=bigyoCha;
+						}else{
+							nearHid[i] = list.get(i).getHid();
+							minGyungdo[i] = bigyoGyungdo;
+							minWido[i] = bigyoWido;
+							minCha[i]=bigyoCha;
+						}
+					}
+				}else{
+					if(bigyoCha<minCha[0]){
+						int q=0;
+						nearHid[q+3] = nearHid[q+2];
+						minGyungdo[q+3] = minGyungdo[q+2];
+						minWido[q+3] = minWido[q+2];
+						minCha[q+3] = minCha[q+2];
+						nearHid[q+2] = nearHid[q+1];
+						minGyungdo[q+2] = minGyungdo[q+1];
+						minWido[q+2] = minWido[q+1];
+						minCha[q+2] = minCha[q+1];
+						nearHid[q+1] = nearHid[q];
+						minGyungdo[q+1] = minGyungdo[q];
+						minWido[q+1] = minWido[q];
+						minCha[q+1] = minCha[q];
+						nearHid[q] = list.get(i).getHid();
+						minGyungdo[q] = bigyoGyungdo;
+						minWido[q] = bigyoWido;
+						minCha[q]=bigyoCha;
+					}else if(bigyoCha<minCha[1]){
+						int q=1;
+						nearHid[q+2] = nearHid[q+1];
+						minGyungdo[q+2] = minGyungdo[q+1];
+						minWido[q+2] = minWido[q+1];
+						minCha[q+2] = minCha[q+1];
+						nearHid[q+1] = nearHid[q];
+						minGyungdo[q+1] = minGyungdo[q];
+						minWido[q+1] = minWido[q];
+						minCha[q+1] = minCha[q];
+						nearHid[q] = list.get(i).getHid();
+						minGyungdo[q] = bigyoGyungdo;
+						minWido[q] = bigyoWido;
+						minCha[q]=bigyoCha;
+					}else if(bigyoCha<minCha[2]){
+						int q=2;
+						nearHid[q+1] = nearHid[q];
+						minGyungdo[q+1] = minGyungdo[q];
+						minWido[q+1] = minWido[q];
+						minCha[q+1] = minCha[q];
+						nearHid[q] = list.get(i).getHid();
+						minGyungdo[q] = bigyoGyungdo;
+						minWido[q] = bigyoWido;
+						minCha[q]=bigyoCha;
+					}else if(bigyoCha<minCha[3]){
+						int q=3;
+						nearHid[q] = list.get(i).getHid();
+						minGyungdo[q] = bigyoGyungdo;
+						minWido[q] = bigyoWido;
+						minCha[q]=bigyoCha;
+					}
+				}
+			}
+		}
+		
+		// 알고리즘 짜다만것 ㅗㅗㅗ
+		/*for(int i=0; i<list.size(); i++){
+			bigyoGyungdo = list.get(i).getGyungdo();
+			bigyoWido = list.get(i).getWido();
 			if(i==0){
 				nearHid[i] = list.get(i).getHid();
 				minGyungdo[i] = bigyoGyungdo;
@@ -92,17 +251,19 @@ public class HospitalService {
 				if(i<=3){
 					for(int k=0; k<i; k++){
 						if(bigyoCha<minCha[k] && bigyoCha!=0){
-							for(int q=k; q>=0; q--){
+							System.out.println("bigyoCha "+bigyoCha+"가 mincha["+k+"] "+minCha[k]+"보다 작아서 앞으로 보냄");
+							for(int q=2; q>=k; q--){
 								nearHid[q+1] = nearHid[q];
 								minGyungdo[q+1] = minGyungdo[q];
 								minWido[q+1] = minWido[q];
 								minCha[q+1] = minCha[q];
+								nearHid[k] = list.get(i).getHid();
+								minGyungdo[k] = bigyoGyungdo;
+								minWido[k] = bigyoWido;
+								minCha[k]=bigyoCha;
 								System.out.println("i="+i+",k="+k+"일때 minCha["+q+"]는"+minCha[q]);
 							}
-							nearHid[0] = list.get(i).getHid();
-							minGyungdo[0] = bigyoGyungdo;
-							minWido[0] = bigyoWido;
-							minCha[0]=bigyoCha;
+							
 						}else{
 							nearHid[i] = list.get(i).getHid();
 							minGyungdo[i] = bigyoGyungdo;
@@ -116,19 +277,24 @@ public class HospitalService {
 				}else{
 					for(int k=0; k<3; k++){
 						if(bigyoCha<minCha[k] && bigyoCha!=0){
+							System.out.println("bigyoCha "+bigyoCha+"가 mincha["+k+"] "+minCha[k]+"보다 작아서 앞으로 보냄");
 							for(int q=k; q>=0; q--){
 								nearHid[q+1] = nearHid[q];
 								minGyungdo[q+1] = minGyungdo[q];
 								minWido[q+1] = minWido[q];
 								minCha[q+1] = minCha[q];
+								
+								
 							}
-							nearHid[0] = list.get(i).getHid();
-							minGyungdo[0] = bigyoGyungdo;
-							minWido[0] = bigyoWido;
-							minCha[0] = bigyoCha;
+							nearHid[k] = list.get(i).getHid();
+							minGyungdo[k] = bigyoGyungdo;
+							minWido[k] = bigyoWido;
+							minCha[k]=bigyoCha;
+							System.out.println("i="+i+",k="+k+"일때 minCha["+k+"]는"+minCha[k]);
 						}
 					}
 					if(bigyoCha<minCha[3] && bigyoCha!=0){
+						System.out.println("bigyoCha "+bigyoCha+"가 mincha[3] "+minCha[3]+"보다 작아서 앞으로 보냄");
 						nearHid[3] = list.get(i).getHid();
 						minGyungdo[3] = bigyoGyungdo;
 						minWido[3] = bigyoWido;
@@ -138,7 +304,7 @@ public class HospitalService {
 				}
 			}
 			System.out.println(i+"번째 돌 때 "+minCha[0]+" "+minCha[1]+" "+minCha[2]+" "+minCha[3]);
-		}
+		}*/
 		System.out.print("최종 hid : ");
 		for(int i=0; i<4; i++){
 			System.out.print(nearHid[i]+" ");

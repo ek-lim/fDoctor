@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.fdoctor.dao.MemberDao;
 import com.fdoctor.vo.MemberVO;
+import com.fdoctor.vo.MessageVO;
 
 @Service
 public class MemberService {
@@ -32,5 +33,17 @@ public class MemberService {
    
    public void delete(String user_id){
       this.memberDao.delete_m(user_id);
+   }
+   
+   
+   public List<MessageVO> selectAll_msg(){
+	   return this.memberDao.selectAll_msg();
+   }
+   
+   public MessageVO selectOne_msg(int message_no){
+	   return this.memberDao.selectOne_msg(message_no);
+   }
+   public void update_msg(int message_no){
+	   this.memberDao.update_msg(message_no);
    }
 }

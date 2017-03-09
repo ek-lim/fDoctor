@@ -17,24 +17,22 @@ import com.fdoctor.vo.MessageVO;
 public class MessageController {
 	@Autowired
 	private MessageService messageService;
-	
+
 	@RequestMapping("/sendmessage.do")
 	public String sendmessage() {
-		return "contact"; 
+		return "contact";
 	}
-	
+
 	@RequestMapping("/sendmessage_ok.do")
-	public String sendmessage_ok(
-			HttpServletRequest request,
-			HttpServletResponse response) throws IOException{
-		
+	public String sendmessage_ok(HttpServletRequest request, HttpServletResponse response) throws IOException {
+
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		String sender = request.getParameter("sender");
-		String message_title =request.getParameter("message_title");
+		String message_title = request.getParameter("message_title");
 		String message_cont = request.getParameter("message_cont");
-		
+
 		MessageVO vo = new MessageVO();
 		vo.setSender(sender);
 		vo.setMessage_title(message_title);
@@ -42,20 +40,21 @@ public class MessageController {
 		vo.setRecipient("admin");
 		// table에 레코드 삽입
 		int re = this.messageService.sendmessage(vo);
-		System.out.println("결과는" +re);
-		if(re==1){
+		System.out.println("결과는" + re);
+		if (re == 1) {
 			System.out.println("여기까진ㅇㅇ");
 			out.println("<script>");
-	        out.println("alert('success하였습니다.')");
-	        out.println("history.back()");
-	        out.println("</script>");
-	     }else{
-	    	 out.println("<script>");
-	         out.println("alert('TT.')");
-	         out.println("history.back()");
-	         out.println("</script>");
-	      }
-		return "redirect:sendmessage.do";
+			out.println("alert('쪽지보내기 성공!')");
+			out.println("location.href='sendmessage.do'");
+			out.println("</script>");
+		}else {
+			out.println("<script>");
+			out.println("alert('쪽지보내기 실패!')");
+			out.println("history.back()");
+			out.println("</script>");
+		}
+		//return "contact";
+		return null;
 	}
 
 }

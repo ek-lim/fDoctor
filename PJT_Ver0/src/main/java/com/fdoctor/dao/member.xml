@@ -29,7 +29,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     
     <!-- 수정 -->
     <update id="update" parameterType="Member">
-       update H_Member set user_point=#{point} where user_id=#{user_id} and user_pwd=#{user_pwd}
+       update H_Member set user_point=#{point} where user_id=#{user_id}
     </update>
     
     <!-- 삭제 -->
