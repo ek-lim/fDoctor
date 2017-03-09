@@ -27,24 +27,24 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </select>
     <!-- 해당 조건 목록 검색 -->
     <select id="selectList" resultMap="HospitalMap" parameterType="Hospital">
-		select * from hospital
-		<trim prefix="WHERE" prefixOverrides="AND|OR">
-			<if test="address!= ''">
-				address like '%'||#{address}||'%'
-			</if>
-			<if test="name != ''">
-				AND name like '%'||#{name}||'%'
-			</if>
-			<if test="department != ''">
-				AND department like '%'||#{department}||'%'
-			</if>
-			<if test="fdoctor != ''">
-				AND fdoctor=#{fdoctor}
-			</if>
-			<if test="foreigner!=''">
-				AND foreigner=#{foreigner}
-			</if>
-		</trim>
+	select * from hospital
+	<trim prefix="WHERE" prefixOverrides="AND|OR">
+		<if test="address!= ''">
+			address like '%'||#{address}||'%'
+		</if>
+		<if test="name != ''">
+			AND name like '%'||#{name}||'%'
+		</if>
+		<if test="department != ''">
+			AND department like '%'||#{department}||'%'
+		</if>
+		<if test="fdoctor != ''">
+			AND fdoctor=#{fdoctor}
+		</if>
+		<if test="foreigner!=''">
+			AND foreigner=#{foreigner}
+		</if>
+	</trim>
 </select>
     <!-- address like '%'#{address}'%' and department like '%'#{department}'%' -->
     <!-- 조건 검색 -->

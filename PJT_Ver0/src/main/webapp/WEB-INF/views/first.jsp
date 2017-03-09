@@ -88,7 +88,7 @@
     <div class="row">
       <div class="col-lg-5 col-lg-offset-1 col-sm-9 recent-view">
         <h3>여의사 찾기 서비스 기획 의도</h3>
-        <p>헿.<br><a href="about.php">Learn More</a></p>
+        <p>사람들에게 꼭 필요한 서비스를 만들고 싶었습니다.만.. 비슷한 서비스가 있어서 이번에는 스프링을 통해 사이트를 구현해 보는 연습을 하는 데 더 의의를 두고.. 훌쩍 <br></p>
       
       </div>
       <div class="col-lg-5 col-lg-offset-1 col-sm-3 recommended">
