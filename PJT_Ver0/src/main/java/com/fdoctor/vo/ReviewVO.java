@@ -4,7 +4,7 @@ public class ReviewVO {
 	private String name;
 	private String review;
 	private String reg_date;
-	
+
 	
 	public String getName() {
 		return name;
@@ -24,6 +24,8 @@ public class ReviewVO {
 	public void setReg_date(String reg_date) {
 		this.reg_date = reg_date;
 	}
+
+	
 	
 	
 	

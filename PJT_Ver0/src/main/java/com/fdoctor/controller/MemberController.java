@@ -4,13 +4,16 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.fdoctor.service.MemberService;
@@ -18,49 +21,62 @@ import com.fdoctor.vo.MemberVO;
 import com.fdoctor.vo.MessageVO;
 
 @Controller
+@SessionAttributes("id")
 public class MemberController {
    @Autowired
    private MemberService memberService;
 
    @RequestMapping(value="login.do", method=RequestMethod.GET)
-   public ModelAndView adminLogin(
-         @RequestParam("userid") String user_id, 
-         @RequestParam("password") String user_pwd, 
-         HttpServletResponse response) throws IOException{
-      
-      response.setContentType("text/html;charset=UTF-8");
-      PrintWriter out = response.getWriter();
-      
-      MemberVO vo = new MemberVO();
-      vo.setUser_id(user_id);
-      vo.setUser_pwd(user_pwd);
-      MemberVO re = memberService.admin_ok(vo);
-      
-      ModelAndView mav = new ModelAndView();
+	public ModelAndView adminLogin(@RequestParam String user_id, @RequestParam String user_pwd,
+			HttpSession session, HttpServletResponse response) throws IOException {
+	   /*request.setCharacterEncoding("utf-8");
+	   String user_id = request.getParameter("userid");
+	   String user_pwd = request.getParameter("password");*/
+	   System.out.println(user_id + "  " + user_pwd);
+		response.setContentType("text/html;charset=UTF-8");
+		PrintWriter out = response.getWriter();
 
-      if(user_id.equals("admin")&&user_pwd.equals("admin")){
-    	 List<MemberVO> list = this.memberService.selectAll();
-         mav.addObject("list", list);
-         
-         List<MessageVO> msg_list = this.memberService.selectAll_msg();
-         mav.addObject("msg_list", msg_list);
-         
-         mav.setViewName("admin");
-         return mav;
-      }else if(re != null){
-    	  out.println("<script>");
-	      out.println("alert('환영합니다!')");
-	      out.println("history.back()");
-	      out.println("</script>");
-    	  return null;
-      }else{
-	         out.println("<script>");
-	         out.println("alert('로그인에 실패하였습니다.')");
-	         out.println("history.back()");
-	         out.println("</script>");
-	         return null;
-         }
-      }
+		MemberVO vo = new MemberVO();
+		vo.setUser_id(user_id);
+		vo.setUser_pwd(user_pwd);
+		MemberVO re = memberService.admin_ok(vo);
+
+		ModelAndView mav = new ModelAndView();
+		if (user_id.equals("admin") && user_pwd.equals("admin")) {
+			session.setAttribute("id", user_id);
+			List<MemberVO> list = this.memberService.selectAll();
+			mav.addObject("list", list);
+
+			List<MessageVO> msg_list = this.memberService.selectAll_msg();
+			mav.addObject("msg_list", msg_list);
+			mav.addObject("id", user_id);
+			mav.setViewName("admin");
+			return mav;
+		} else if (re != null) {
+			if (user_id.equals(re.getUser_id()) && user_pwd.equals(re.getUser_pwd())) {
+				session.setAttribute("name", re.getUser_name());
+				session.setAttribute("id", re.getUser_id());
+				out.println("<script>");
+				out.println("alert('환영합니다!')");
+				out.println("history.back()");
+				out.println("</script>");
+				mav.addObject("id", user_id);
+				mav.setViewName("../../index");
+				return mav;
+			}
+		} else {
+			out.println("<script>");
+			out.println("alert('로그인에 실패하였습니다.')");
+			out.println("history.back()");
+			out.println("</script>");
+			return null;
+		}
+		return null;
+	}
+   @RequestMapping("logout.do")
+   public String logout(){
+	   return "logout";
+   }
    
    @RequestMapping("msg_cont.do")
    public ModelAndView msgcont(

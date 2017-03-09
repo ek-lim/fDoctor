@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@include file="header.jsp" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -12,7 +13,7 @@
 <div class="banner-search">
   <div class="container"> 
     <!-- banner -->
-    <h3>내 맘에 드는 병원 찾기!</h3>
+    <h3>내 맘에 드는 병원 찾기!</h3>${session.name}
     <form id="near" action="distance.do">
     <input type="hidden" name="gdo" value="37.5207740">
     <input type="hidden" name="wdo" value="127.0217920">
@@ -61,19 +62,16 @@
 									<h4 class="modal-title">로그인</h4>
 								</div>
 
-								<form name="loginfrm" onsubmit="return dataCheck();"
-									method="get" enctype="multipart/form-data"
-									action="<%=request.getContextPath()%>/login.do">
+								<form name="loginfrm" method="get" onsubmit="return dataCheck();"
+									enctype="multipart/form-data" action="login.do">
 									<div class="modal-body">
-										<font color=black>아이디</font> <input type="text" name="userid"><br />
-										<font color=black>비밀번호</font> <input type="password"
-											name="password">
+										<font color=black>아이디</font> <input type="text" name="user_id"><br />
+										<font color=black>비밀번호</font> <input type="password" name="user_pwd">
 									</div>
 
 									<div class="modal-footer">
 										<!-- data-dismiss="modal" -->
-										<input type="submit" class="btn btn-primary"
-											onclick="return doTip();" value="로그인" />
+										<input type="submit" class="btn btn-primary" value="로그인" />
 									</div>
 								</form>
 

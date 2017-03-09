@@ -16,6 +16,7 @@
 type="text/javascript"></script>
 <script src="http://code.jquery.com/jquery-1.12.1.js"></script> 
 <script src="resource/js/ajax.js"></script>
+<link rel="stylesheet" href="resource/css/detail.css" type="text/css"/>
 <script>
   function data_check(){
 	  var sender = document.frm.sender.value;
@@ -127,10 +128,77 @@ type="text/javascript"></script>
 			
 		</div>	
 		<h4>
-			<span class="glyphicon glyphicon-th-list"></span> 후기
+			<span class="glyphicon glyphicon-th-list"></span> 후기 <small>당신의 멋진 후기를 기다립니다!!</small> 
 		</h4>
 		<p>${vo.review }</p>
-		<!-- 다영씨 part start -->
+		<!-- 다영씨 part start -->			
+<!-- 여기부터 후기! -->
+
+<div class="container">
+
+
+
+<!-- 후기 목록 -->
+	<div class="c" style="width: 50%">
+			<table class="table table-hover">
+				<tr>
+					<th>이름</th>
+					<th>후기</th>
+					<th>날짜</th>
+				</tr>
+				<c:forEach var="nnList" items="${list}">
+				<tr> 
+					<td>${nnList.name}</td>
+					<td>${nnList.review}</td>
+					<td>${nnList.reg_date}</td>
+				</tr>
+				</c:forEach>
+			</table>
+			<div class="center"><button data-toggle="modal" data-target="#squarespaceModal" class="btn btn-primary center-block">후기작성하기</button></div>
+	</div>	
+<br><br><br>
+
+<!-- Popup Modal Window - START --> 
+
+
+
+
+<div class="modal fade alert" id="squarespaceModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">x</span><span class="sr-only">닫기</span></button>
+            <h3 class="modal-title" id="lineModalLabel">후기를 남겨주시는건가요?!!!</h3>
+        </div>
+        <div class="modal-body">
+            <form name="f" method="post" action="review.do">
+              <div class="form-group">
+                <label for="exampleInputEmail1">성함을 입력해주세요</label>
+                <input  class="form-control" name="name" id="name" placeholder="당신의 이름은?">
+                <input type="hidden" name="hid" value="${vo.hid }"/>
+              </div>
+              
+              <div class="form-group">
+                <label for="exampleInputPassword1">이 병원의 후기를 남겨주세요</label>
+                <input  class="form-control" name="review" id="review" placeholder="후기입력해주세요">
+              </div>
+<!--               <div class="checkbox">
+                <label>
+                  <input type="checkbox"> Remember login
+                </label>
+              </div> -->
+              <button type="submit" class="btn btn-primary center-block">작성완료!</button>
+            </form>
+        </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Popup Modal Window - END -->
+<!-- 여기까지 후기 -->	
+</div>
 		<%-- <c:forEach var="uList" items="${reviewlist}">
 									<tr>
 										<td align="center">${uList.name}</td>

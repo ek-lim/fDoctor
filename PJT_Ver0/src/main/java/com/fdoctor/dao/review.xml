@@ -9,17 +9,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="name" column="name" />
 		<result property="review" column="review" />
 		<result property="reg_date" column="reg_date" />
+
 	</resultMap>  
 	
 	<!-- 전체 검색 -->
     <select id="reviewAll" resultMap="ReviewMap">
-		select * from detail
+		select * from detail 
     </select>
 
     
     <!-- 추가 -->
     <insert id = "reviewInsert" parameterType="Review">
-    	insert into detail values(#{name}, #{review}, sysdate)
+    	insert into detail values( #{name}, #{review}, sysdate)
     </insert>
 
 </mapper>

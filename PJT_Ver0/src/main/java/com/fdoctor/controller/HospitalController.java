@@ -14,13 +14,18 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.fdoctor.service.HospitalService;
+import com.fdoctor.service.ReviewService;
 import com.fdoctor.vo.HospitalVO;
+import com.fdoctor.vo.ReviewVO;
 
 @Controller
 public class HospitalController {
 	
 	@Autowired
 	private HospitalService hospitalService;
+	@Autowired
+	private ReviewService reviewService;
+	
 	@RequestMapping("selectAll.do")
 	public ModelAndView select(){
 		List<HospitalVO> list = this.hospitalService.selectAll();
@@ -59,6 +64,7 @@ public class HospitalController {
 		
 		HospitalVO vo = this.hospitalService.selectOne(hid);
 		List<HospitalVO> list = this.hospitalService.nearList(hid);
+		List<ReviewVO> rlist = this.reviewService.reviewAll();
 		// javascript 때문에 한글 처리 한번 더!
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = response.getWriter();
@@ -67,6 +73,7 @@ public class HospitalController {
 			ModelAndView mav = new ModelAndView();
 			mav.addObject("vo", vo);
 			mav.addObject("distlist", list);
+			mav.addObject("list", rlist);
 			mav.setViewName("detail"); 
 			return mav; // view page 포워딩
 		} else {
