@@ -39,7 +39,7 @@ public class MemberController {
       ModelAndView mav = new ModelAndView();
 
       if(user_id.equals("admin")&&user_pwd.equals("admin")){
-        List<MemberVO> list = this.memberService.selectAll();
+    	 List<MemberVO> list = this.memberService.selectAll();
          mav.addObject("list", list);
          
          List<MessageVO> msg_list = this.memberService.selectAll_msg();
@@ -48,24 +48,24 @@ public class MemberController {
          mav.setViewName("admin");
          return mav;
       }else if(re != null){
-         out.println("<script>");
-         out.println("alert('환영합니다!')");
-         out.println("history.back()");
-         out.println("</script>");
-         return null;
+    	  out.println("<script>");
+	      out.println("alert('환영합니다!')");
+	      out.println("history.back()");
+	      out.println("</script>");
+    	  return null;
       }else{
-            out.println("<script>");
-            out.println("alert('로그인에 실패하였습니다.')");
-            out.println("history.back()");
-            out.println("</script>");
-            return null;
+	         out.println("<script>");
+	         out.println("alert('로그인에 실패하였습니다.')");
+	         out.println("history.back()");
+	         out.println("</script>");
+	         return null;
          }
       }
    
    @RequestMapping("msg_cont.do")
    public ModelAndView msgcont(
          @RequestParam("message_no") int message_no) throws IOException{
-        
+    	 
          ModelAndView mav = new ModelAndView();
          
          MessageVO msgvo = this.memberService.selectOne_msg(message_no);
@@ -79,36 +79,24 @@ public class MemberController {
    @RequestMapping(value="returnList.do", method=RequestMethod.GET)
    public ModelAndView returnadmin(@RequestParam("msg_no") int message_no){
       
-      ModelAndView mav = new ModelAndView();
-      
-      this.memberService.update_msg(message_no);
-      List<MessageVO> msg_list = this.memberService.selectAll_msg();
-      
-      MemberVO vo = new MemberVO();
-      
-      this.memberService.update(vo);
-      List<MemberVO> list = this.memberService.selectAll();
+		ModelAndView mav = new ModelAndView();
+		
+		this.memberService.update_msg(message_no);
+		List<MessageVO> msg_list = this.memberService.selectAll_msg();
+		
+		MemberVO vo = new MemberVO();
+		
+		this.memberService.update(vo);
+		List<MemberVO> list = this.memberService.selectAll();
         
-      mav.addObject("list", list);
-      mav.addObject("msg_list", msg_list);
-      mav.setViewName("admin");
+		mav.addObject("list", list);
+		mav.addObject("msg_list", msg_list);
+		mav.setViewName("admin");
+		
+		return mav;
       
-      return mav;
-      
-      }
+     }
    
-   
-   /*@RequestMapping("msg_cont.do")
-   public ModelAndView msg_cont(
-       @RequestParam("message_no") int message_no){
-      
-      MessageVO msgvo = this.memberService.selectOne_msg(message_no);
-      System.out.print("msgvo");
-       ModelAndView mav = new ModelAndView();
-       mav.addObject("msgvo", msgvo);
-       mav.setViewName("admin");
-      return mav;
-   }*/
    
    @RequestMapping("selectAll_m.do")
    public ModelAndView select(){
@@ -119,23 +107,21 @@ public class MemberController {
       return mav;
    }
    
-   @RequestMapping("update_m.do")
+   @RequestMapping("pointForm.do")
    public String update(
-         @RequestParam("Sender") String user_id,
-         HttpServletResponse response) throws IOException{
-      int n=0;
-      response.setContentType("text/html;charset=UTF-8");
-      PrintWriter out = response.getWriter();
-      out.println("<script>");
-      out.println("n =prompt(적립 포인트 입력 :)");
-      out.println("<script>");
-      MemberVO vo = new MemberVO();
-      vo.setUser_id(user_id);
-      vo.setUser_point(n);
-      this.memberService.update(vo);
-      
-      return "redirect:admin";
-      
+		   @RequestParam("ckbox") int message_no){
+	   return "pointForm";
+   }
+   
+   @RequestMapping("point.do")
+   public void pointadd(@RequestParam("pointAdd") int user_point){
+	   
+   }
+   
+   @RequestMapping("read_ck.do")
+   public String readck(){
+	   	
+	   return "";
    }
    
   
