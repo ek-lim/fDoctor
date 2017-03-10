@@ -62,8 +62,8 @@
 									<h4 class="modal-title">로그인</h4>
 								</div>
 
-								<form name="loginfrm" method="get" onsubmit="return dataCheck();"
-									enctype="multipart/form-data" action="login.do">
+								<form name="loginfrm" method="get" onsubmit="return dataCheck();" 
+								               action="<%=request.getContextPath()%>/login.do">
 									<div class="modal-body">
 										<font color=black>아이디</font> <input type="text" name="user_id"><br />
 										<font color=black>비밀번호</font> <input type="password" name="user_pwd">

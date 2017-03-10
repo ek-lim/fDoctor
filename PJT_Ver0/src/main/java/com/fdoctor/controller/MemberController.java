@@ -26,12 +26,10 @@ public class MemberController {
    @Autowired
    private MemberService memberService;
 
-   @RequestMapping(value="login.do", method=RequestMethod.GET)
-	public ModelAndView adminLogin(@RequestParam String user_id, @RequestParam String user_pwd,
+   @RequestMapping(value="/login.do", method=RequestMethod.GET)
+	public ModelAndView adminLogin(String user_id, String user_pwd,
 			HttpSession session, HttpServletResponse response) throws IOException {
-	   /*request.setCharacterEncoding("utf-8");
-	   String user_id = request.getParameter("userid");
-	   String user_pwd = request.getParameter("password");*/
+	   
 	   System.out.println(user_id + "  " + user_pwd);
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = response.getWriter();
