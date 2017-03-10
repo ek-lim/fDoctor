@@ -25,9 +25,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
        select * from message order by message_date
     </select>
     
-    <!-- 선택 보기 -->
+    <!-- 선택 메시지 보기 -->
     <select id="selectOnemessage" resultMap="MessageMap" parameterType="int">
        select * from message where message_no=#{message_no}
+    </select>
+    
+    <!-- 선택 멤버 보기 -->
+    <select id="selectOnesender" resultMap="MessageMap" parameterType="int">
+       select sender from message where message_no=#{message_no}
     </select>
     
     <!-- 수정 -->

@@ -16,11 +16,19 @@
 
 <!-- 쪽지 내용 -->
 	<div class="container" id="msg_cont" style="display: block;">
+	<form action="<%=request.getContextPath()%>/pointForm.do">
 		<div class="panel panel-success">
-			<div class="panel-heading"><input type="hidden" id="msg_no"value="${msgvo.message_no}"/>${msgvo.sender }님의 Message</div>
+			<div class="panel-heading">${msgvo.sender }님의 Message</div>
+			<input type="hidden" name="id" value="${msgvo.sender }"/>
+			<input type="hidden" id="msgno" name="msgno" value="${msgvo.message_no }">
 			<div class="panel-body">${msgvo.message_cont}</div>
-			<div align="center"><button class="btn btn-default" onclick="location='returnList.do?msg_no=${msgvo.message_no}'">닫기</button></div>
+			<div align="center">
+			<button class="btn btn-default" type="submit">포인트적립</button>
+			<button class="btn btn-default" onclick="location='<%=request.getContextPath()%>/close.do'" >닫기</button>
+			</div>
+			
 		</div>
+	</form>
 	</div>
 
 </body>

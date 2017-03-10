@@ -1,18 +1,19 @@
 function ajax(){
     // 동기화할 ID 가져오기
-    var name = encodeURIComponent($("#name").val());
+    var name = $("#name").val();
     var hid = $("#hid").val();
-    var review = encodeURIComponent($("#review").val());
+    var review = decodeURIComponent($("#review").val());
     
-    /*name = encodeURIComponent(name);
-    review = encodeURIComponent(review);*/
+    
+    name = encodeURIComponent(name);
+    review = encodeURIComponent(review);
     
     // 문자열 배열을 name/value 형태로 담는다.
-    var allData = { "name": name, "hid": hid, "review": review };
+    var allData = { "name": name1, "hid": hid, "review": review };
      
     $.ajax({
         url:"detail.do",
-        type:'GET',
+        type:'POST',
         data: allData,
         success:function(data){
             alert("후기 작성쓰!");

@@ -110,6 +110,11 @@ public class MemberController {
 		return mav;
       
      }
+   @RequestMapping("close.do")
+   public String close(){
+	   return "redirect:login.do?user_id=admin&user_pwd=admin";
+   }
+
    
    
    @RequestMapping("selectAll_m.do")
@@ -122,22 +127,94 @@ public class MemberController {
    }
    
    @RequestMapping("pointForm.do")
-   public String update(
-		   @RequestParam("ckbox") int message_no){
-	   return "pointForm";
-   }
-   
-   @RequestMapping("point.do")
-   public void pointadd(@RequestParam("pointAdd") int user_point){
+   public ModelAndView update(
+		   @RequestParam("msgno") int message_no,
+		   HttpServletResponse response) throws IOException{
+	   response.setContentType("text/html;charset=UTF-8");
+	   PrintWriter out = response.getWriter();
+	   MessageVO msgvo = this.memberService.selectOne_msg(message_no);
+	   System.out.println(msgvo.getSender());
+	   String user_id = msgvo.getSender();
+	   
+	   try{
+		   MemberVO vo = this.memberService.selectpoint(user_id);
+		   int user_point = vo.getUser_point();
+		   ModelAndView aaa = new ModelAndView();
+		   aaa.addObject("id", user_id);
+		   aaa.addObject("point", user_point);
+		   aaa.addObject("msgno", message_no);
+		   aaa.setViewName("pointForm");
+		   return aaa;
+	   }catch(NullPointerException e){
+		   out.println("<script>");
+		   out.println("alert('일치하는 회원이 없습니다.')");
+		   out.println("history.go(-2)");
+		   out.println("</script>");
+		   return null;
+	   }
 	   
    }
    
+   @RequestMapping("point.do")
+   public String pointadd(@RequestParam("id") String sender,
+		   @RequestParam("point") int point, @RequestParam("msgno") int msg_no,
+		   HttpServletResponse response) throws IOException{
+	   
+	   response.setContentType("text/html;charset=UTF-8");
+	   PrintWriter out = response.getWriter();
+	   
+	   MemberVO vo = this.memberService.selectpoint(sender);
+	   
+	   try{
+			 if(vo.getUser_id().equals(sender)){
+				 vo.setUser_id(sender);
+				 vo.setUser_point(point);
+				 this.memberService.update(vo);
+				 return "redirect:login.do?user_id=admin&user_pwd=admin";
+			 }
+	   }catch (NullPointerException e) {
+		   out.println("<script>");
+		   out.println("alert('일치하는 회원이 없습니다.')");
+		   out.println("history.back()");
+		   out.println("</script>");
+		   return null;
+	   }finally{
+		   
+	   }
+	return null;
+	   
+   }
    @RequestMapping("read_ck.do")
-   public String readck(){
-	   	
-	   return "";
+   public ModelAndView readck(@RequestParam("readck") int readck){
+	   String message_ck = null;
+	   if(readck == 1){
+		   ModelAndView mav = new ModelAndView();
+		   message_ck = "읽음";
+		   List<MessageVO> msg_list = memberService.selectOne_ck(message_ck);
+		   mav.addObject("msg_list", msg_list);
+		   return mav;
+	   }else{
+		   ModelAndView mav = new ModelAndView();
+		   message_ck = "안읽음";
+		   List<MessageVO> msg_list = memberService.selectOne_ck(message_ck);
+		   mav.addObject("msg_list", msg_list);
+		   return mav;
+	   }
+
    }
    
+   @RequestMapping(value="/join2.do", method=RequestMethod.GET)// 회원가입	
+	public String join(@RequestParam("user_id") String user_id, 
+			@RequestParam("user_pwd") String user_pwd,
+			@RequestParam("user_name") String user_name) {
+		System.out.println("join.do");
+		MemberVO vo = new MemberVO();
+		vo.setUser_id(user_id);
+		vo.setUser_pwd(user_pwd);
+		vo.setUser_name(user_name);		
+		this.memberService.joinUser(vo);
+		return "redirect:first.do";
+	}
   
    
    

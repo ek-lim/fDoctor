@@ -27,6 +27,10 @@ public class MemberService {
       this.memberDao.insert_m(vo);
    }
    
+   public MemberVO selectpoint(String user_id){
+	   return this.memberDao.selectpoint(user_id);
+   }
+   
    public void update(MemberVO vo){
       this.memberDao.update_m(vo);
    }
@@ -45,5 +49,13 @@ public class MemberService {
    }
    public void update_msg(int message_no){
 	   this.memberDao.update_msg(message_no);
+   }
+   
+   public void joinUser(MemberVO vo){
+	   this.memberDao.joinUser(vo);
+   }
+   
+   public List<MessageVO> selectOne_ck(String message_ck){
+	   return this.memberDao.selectOne_ck(message_ck);
    }
 }

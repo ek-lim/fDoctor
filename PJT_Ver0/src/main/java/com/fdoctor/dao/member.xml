@@ -21,6 +21,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     <select id="adminLogin" resultType="Member" parameterType="Member">
        select * from H_Member where user_id=#{user_id} and user_pwd=#{user_pwd}
     </select>
+    <!-- 선택 조회 -->
+	<select id="selectpoint" parameterType="String" resultType="Member"> 
+	select * from H_Member where user_id=#{user_id} </select>
     
     <!-- 추가 -->
     <insert id = "insert" parameterType="Member">
@@ -29,11 +32,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     
     <!-- 수정 -->
     <update id="update" parameterType="Member">
-       update H_Member set user_point=#{point} where user_id=#{user_id}
+       update H_Member set user_point=user_point+50 where user_id=#{user_id}
     </update>
     
     <!-- 삭제 -->
     <delete id="delete" parameterType="String">
        delete from H_Member where user_id=#{user_id}
     </delete>
+    
+    <!-- 회원가입 -->
+    <insert id="joinUser" parameterType="Member"> 
+    	insert into H_Member values(#{user_id},#{user_name},#{user_pwd}, default) 
+    </insert>
 </mapper>

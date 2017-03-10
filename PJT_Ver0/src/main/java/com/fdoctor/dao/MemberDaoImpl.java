@@ -24,12 +24,24 @@ public class MemberDaoImpl implements MemberDao {
       this.sqlSessionTemplate.insert("insert", vo);
 
    }
+   @Override
+   public List<MessageVO> selectOne_ck(String message_ck) {
+   	// TODO Auto-generated method stub
+   	return this.sqlSessionTemplate.selectOne("selectOneck", message_ck);
+   }
 
    @Override
    public void update_m(MemberVO vo) {
       this.sqlSessionTemplate.update("update", vo);
 
    }
+   
+
+@Override
+public MemberVO selectpoint(String user_id) {
+	// TODO Auto-generated method stub
+	return this.sqlSessionTemplate.selectOne("selectpoint", user_id);
+}
 
    @Override
    public void delete_m(String user_id) {
@@ -59,6 +71,9 @@ public void update_msg(int message_no) {
 	
 	this.sqlSessionTemplate.update("updatemessage", message_no);
 }
-
+/*회원 가입*/
+public void joinUser(MemberVO vo){
+	this.sqlSessionTemplate.update("joinUser",vo);
+}
 
 }
