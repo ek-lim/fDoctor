@@ -1,6 +1,10 @@
 package com.fdoctor.controller;
 
+import java.io.UnsupportedEncodingException;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
@@ -32,12 +36,14 @@ public class ReviewController {
 	
 	
 	@RequestMapping(value="review.do", method=RequestMethod.POST)
-	public String detail(@RequestParam("name") String name,
-						@RequestParam("review") String review,
-						@RequestParam("hid") int hid){
-
+	public String detail(HttpServletRequest request,
+						@RequestParam("hid") int hid) throws UnsupportedEncodingException{
+			
 			ReviewVO vo=new ReviewVO();
 			
+			request.setCharacterEncoding("utf-8");
+			String name = request.getParameter("name");
+			String review = request.getParameter("review");
 			vo.setName(name);
 			vo.setReview(review);
 			

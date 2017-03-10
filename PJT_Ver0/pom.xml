@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.fdoctor</groupId>
 	<artifactId>findHer</artifactId>
-	<name>PJT_Ver0</name>
+	<name>PJT_Ver1</name>
 	<packaging>war</packaging>
 	<version>1.0.0-BUILD-SNAPSHOT</version>
 	

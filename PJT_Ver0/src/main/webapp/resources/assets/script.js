@@ -1,4 +1,4 @@
-  $(document).ready(function() {
+﻿  $(document).ready(function() {
    $("#owl-example").owlCarousel();
   $('.listing-detail span').tooltip('hide');
         $('.carousel').carousel({

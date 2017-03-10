@@ -14,6 +14,9 @@ review varchar(100),
 reg_date date
 );
 
+delete from detail
+
 insert into review values(1001, '다영', '여기좋아요', sysdate);
+insert into detail values('길동', '리뷰',, )
 
 select*from review;

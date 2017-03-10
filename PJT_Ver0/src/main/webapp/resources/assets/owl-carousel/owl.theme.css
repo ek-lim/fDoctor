@@ -3,6 +3,8 @@
 *	v1.3.2
 */
 
+@CHARSET "UTF-8";
+
 .owl-theme .owl-controls{
 	margin-top: 10px;
 	text-align: center;

@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@include file="header.jsp" %>
 <%@page import="com.fdoctor.vo.HospitalVO" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -171,11 +170,11 @@ type="text/javascript"></script>
             <h3 class="modal-title" id="lineModalLabel">후기를 남겨주시는건가요?!!!</h3>
         </div>
         <div class="modal-body">
-            <form name="f" method="post" action="review.do">
+            <form name="f" accept-charset="UTF-8" method="post" action="review.do">
               <div class="form-group">
                 <label for="exampleInputEmail1">성함을 입력해주세요</label>
                 <input  class="form-control" name="name" id="name" placeholder="당신의 이름은?">
-                <input type="hidden" name="hid" value="${vo.hid }"/>
+                <input type="hidden" id="hid" name="hid" value="${vo.hid }"/>
               </div>
               
               <div class="form-group">
@@ -187,7 +186,8 @@ type="text/javascript"></script>
                   <input type="checkbox"> Remember login
                 </label>
               </div> -->
-              <button type="submit" class="btn btn-primary center-block">작성완료!</button>
+              <!-- <button type="submit" class="btn btn-primary center-block">작성완료!</button> -->
+              <button onclick="ajax()" class="btn btn-primary center-block">작성완료!</button>
             </form>
         </div>
     </div>

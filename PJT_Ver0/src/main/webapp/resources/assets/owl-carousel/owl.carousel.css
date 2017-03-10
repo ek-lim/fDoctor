@@ -2,6 +2,8 @@
  * 	Core Owl Carousel CSS File
  *	v1.3.2
  */
+ 
+ @CHARSET "UTF-8";
 
 /* clearfix */
 .owl-carousel .owl-wrapper:after {
