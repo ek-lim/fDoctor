@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.fdoctor.vo.MemberVO;
 import com.fdoctor.vo.MessageVO;
+import com.fdoctor.vo.ReviewVO;
 @Repository
 public class MemberDaoImpl implements MemberDao {
    
@@ -34,6 +35,11 @@ public class MemberDaoImpl implements MemberDao {
    public void update_m(MemberVO vo) {
       this.sqlSessionTemplate.update("update", vo);
 
+   }
+   @Override
+   public List<ReviewVO> selectAll_rev() {
+   	// TODO Auto-generated method stub
+   	return sqlSessionTemplate.selectList("reviewAll");
    }
    
 

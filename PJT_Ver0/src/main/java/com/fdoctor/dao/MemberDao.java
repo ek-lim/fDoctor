@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.fdoctor.vo.MemberVO;
 import com.fdoctor.vo.MessageVO;
+import com.fdoctor.vo.ReviewVO;
 
 public interface MemberDao {
    List<MemberVO> selectAll_m();
@@ -17,4 +18,5 @@ public interface MemberDao {
    void update_msg(int message_no);
    public void joinUser(MemberVO vo);
    List<MessageVO> selectOne_ck(String message_ck);
+   List<ReviewVO> selectAll_rev();
 }

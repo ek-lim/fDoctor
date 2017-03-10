@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.fdoctor.dao.MemberDao;
 import com.fdoctor.vo.MemberVO;
 import com.fdoctor.vo.MessageVO;
+import com.fdoctor.vo.ReviewVO;
 
 @Service
 public class MemberService {
@@ -26,6 +27,10 @@ public class MemberService {
    public void insert(MemberVO vo){
       this.memberDao.insert_m(vo);
    }
+   public List<ReviewVO> selectAll_r(){
+	   return this.memberDao.selectAll_rev();
+   }
+
    
    public MemberVO selectpoint(String user_id){
 	   return this.memberDao.selectpoint(user_id);

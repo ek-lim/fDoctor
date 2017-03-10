@@ -19,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.fdoctor.service.MemberService;
 import com.fdoctor.vo.MemberVO;
 import com.fdoctor.vo.MessageVO;
+import com.fdoctor.vo.ReviewVO;
 
 @Controller
 @SessionAttributes("id")
@@ -44,7 +45,8 @@ public class MemberController {
 			session.setAttribute("id", user_id);
 			List<MemberVO> list = this.memberService.selectAll();
 			mav.addObject("list", list);
-
+			List<ReviewVO> rlist = this.memberService.selectAll_r();
+	         mav.addObject("rlist", rlist);
 			List<MessageVO> msg_list = this.memberService.selectAll_msg();
 			mav.addObject("msg_list", msg_list);
 			mav.addObject("id", user_id);
