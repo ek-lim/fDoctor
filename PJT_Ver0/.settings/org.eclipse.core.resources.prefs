@@ -1,4 +1,8 @@
 eclipse.preferences.version=1
 encoding//src/main/webapp/WEB-INF/views/detail.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/footer.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/views/header.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/home.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/selectForm.jsp=UTF-8
 encoding//src/main/webapp/resources/hospital.sql=UTF-8
+encoding//src/main/webapp/resources/include/footer.jsp=UTF-8

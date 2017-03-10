@@ -40,7 +40,7 @@ public class ReviewController {
 						@RequestParam("hid") int hid) throws UnsupportedEncodingException{
 			
 			ReviewVO vo=new ReviewVO();
-			
+			System.out.println("여기 도달");
 			request.setCharacterEncoding("utf-8");
 			String name = request.getParameter("name");
 			String review = request.getParameter("review");
